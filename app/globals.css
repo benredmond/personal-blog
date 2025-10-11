@@ -1,15 +1,120 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================================================
+   Neo-Bauhaus Design System - Personal Blog
+   Extracted from chinese-bot (Jun 2025 - Oct 2025)
+   Design Rating: 9/10 | L-Frame borders + Ma (間) spacing
+   ============================================================================ */
+
+/* Phase 1: CSS Variables Foundation */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Neo-Bauhaus Color Palette */
+  --color-vermilion: #ff3a2d; /* Japanese red - primary accent */
+  --color-ultramarine: #0052cc; /* Rich blue - links and focus */
+  --color-matcha: #6b8e6b; /* Japanese green - learning category */
+  --color-warm-gray: #0a0a0a; /* Ink black - primary text */
+  --color-light-gray: #e8e5e0; /* Warm gray - borders */
+  --color-off-white: #fffef9; /* Paper white - backgrounds */
+  --color-background: #ffffff; /* Pure white */
+
+  /* Font Families */
+  --font-sans-en: Geist, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono-en: 'Geist Mono', 'JetBrains Mono', 'SF Mono', monospace;
+
+  /* Typography Scale - Perfect Fourth (1.333) */
+  --font-size-xs: 0.625rem; /* 10px */
+  --font-size-sm: 0.75rem; /* 12px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-body: 1.125rem; /* 18px - blog body text */
+  --font-size-lg: 1.313rem; /* 21px */
+  --font-size-xl: 1.75rem; /* 28px */
+  --font-size-2xl: 2.375rem; /* 38px */
+  --font-size-3xl: 3.125rem; /* 50px */
+  --font-size-h3: 1.75rem; /* 28px */
+  --font-size-h4: 1.313rem; /* 21px */
+  --font-size-small: 0.875rem; /* 14px */
+  --font-size-tiny: 0.75rem; /* 12px */
+
+  /* Line Heights - 8px grid aligned */
+  --line-height-xs: 1rem; /* 16px */
+  --line-height-sm: 1rem; /* 16px */
+  --line-height-base: 1.5rem; /* 24px */
+  --line-height-lg: 2rem; /* 32px */
+  --line-height-xl: 2.5rem; /* 40px */
+  --line-height-2xl: 3rem; /* 48px */
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Tailwind-compatible aliases */
+  --color-foreground: var(--color-warm-gray);
+}
+
+:root {
+  /* Ma (間) Spacing System - 8px baseline grid */
+  --ma-0: 16px; /* 2×8px - Small gaps */
+  --ma-1: 24px; /* 3×8px - Standard padding */
+  --ma-2: 32px; /* 4×8px - Related item gaps */
+  --ma-3: 48px; /* 6×8px - Section separation */
+  --ma-4: 64px; /* 8×8px - Major blocks */
+  --ma-5: 80px; /* 10×8px - Hero spacing */
+
+  /* Spacing Scale (8px multiples) */
+  --space-0: 0;
+  --space-0-5: 4px; /* 0.5x */
+  --space-1: 8px; /* 1x */
+  --space-2: 16px; /* 2x */
+  --space-3: 24px; /* 3x */
+  --space-4: 32px; /* 4x */
+  --space-6: 48px; /* 6x */
+  --space-8: 64px; /* 8x */
+  --space-12: 96px; /* 12x */
+
+  /* Neo-Bauhaus Border System */
+  --border-user: 6px; /* User message L-frame borders */
+  --border-ai: 4px; /* AI message L-frame borders */
+  --border-divider: 1px; /* Divider lines */
+  --border-focus: 2px; /* Focus states */
+  --border-width-3: 3px;
+
+  /* Constructional Animation Timing */
+  --construct-duration-base: 400ms;
+  --construct-duration-fast: 200ms;
+  --construct-delay-sequence: 100ms;
+  --construct-ease-mechanical: cubic-bezier(0.4, 0, 0.2, 1);
+  --construct-ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-mechanical: 200ms;
+  --transition-mechanical: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Neo-Bauhaus Shadow System */
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.12);
+  --shadow-none: none;
+
+  /* Opacity variants for colors */
+  --vermilion-5: rgba(255, 58, 45, 0.05);
+  --vermilion-10: rgba(255, 58, 45, 0.1);
+  --vermilion-20: rgba(255, 58, 45, 0.2);
+  --ultramarine-5: rgba(0, 82, 204, 0.05);
+  --ultramarine-10: rgba(0, 82, 204, 0.1);
+  --ultramarine-80: rgba(0, 82, 204, 0.8);
+
+  /* Text colors */
+  --color-text-primary: var(--color-warm-gray);
+  --color-text-secondary: rgba(10, 10, 10, 0.65);
+  --color-border-subtle: var(--color-light-gray);
+
+  /* Component-specific colors */
+  --color-vermilion-dark: #cc2e24; /* Darker vermilion for hover */
+  --color-neutral-gray: #9a9a9a; /* Neutral gray for AI messages */
+
+  /* Legacy compatibility */
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +124,234 @@
   }
 }
 
+/* Phase 2: L-Frame Utilities */
+
+/* L-Frame Border System - Neo-Bauhaus architectural borders */
+.l-frame-construct {
+  position: relative;
+}
+
+.l-frame-border {
+  position: absolute;
+  background-color: var(--color-vermilion);
+  box-shadow: var(--shadow-subtle);
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  z-index: 2;
+  transition: background-color 200ms ease;
+}
+
+/* Top border (horizontal) */
+.l-frame-top {
+  height: 4px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 10;
+  transform-origin: left center;
+}
+
+/* Side borders (vertical) */
+.l-frame-side {
+  width: 4px;
+  height: 100%;
+  top: 0;
+  transform-origin: center top;
+}
+
+.l-frame-left {
+  left: 0;
+}
+
+.l-frame-right {
+  right: 0;
+}
+
+/* Constructional Animations - Border draw-in effect */
+@keyframes frame-construct-horizontal {
+  from {
+    transform: scaleX(0);
+    opacity: 0.7;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes frame-construct-vertical {
+  from {
+    transform: scaleY(0);
+    opacity: 0.7;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Apply animations with proper timing */
+.l-frame-wrapper.animate .l-frame-top {
+  animation: frame-construct-horizontal var(--construct-duration-fast) var(--construct-ease-out) forwards;
+}
+
+.l-frame-wrapper.animate .l-frame-side {
+  animation: frame-construct-vertical var(--construct-duration-fast) var(--construct-ease-out) var(--construct-delay-sequence) forwards;
+  opacity: 0; /* Start hidden */
+}
+
+/* Hover states */
+.l-frame-construct:hover .l-frame-border {
+  box-shadow: var(--shadow-hover);
+  transition: box-shadow 200ms ease;
+}
+
+/* Focus state for accessibility */
+.l-frame-construct:focus-within .l-frame-border {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Phase 3: Grid System */
+
+/* MasterGrid - 12-column CSS Grid with Ma spacing */
+.master-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--ma-1); /* 24px */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ma-1);
+}
+
+/* Responsive: 6 columns on mobile */
+@media (max-width: 768px) {
+  .master-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--ma-0); /* 16px on mobile */
+    padding: 0 var(--ma-0);
+  }
+}
+
+/* Grid utilities for column spanning */
+.col-span-1 { grid-column: span 1; }
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+.col-span-4 { grid-column: span 4; }
+.col-span-5 { grid-column: span 5; }
+.col-span-6 { grid-column: span 6; }
+.col-span-7 { grid-column: span 7; }
+.col-span-8 { grid-column: span 8; }
+.col-span-9 { grid-column: span 9; }
+.col-span-10 { grid-column: span 10; }
+.col-span-11 { grid-column: span 11; }
+.col-span-12 { grid-column: span 12; }
+
+/* Grid utilities for column starting position */
+.col-start-1 { grid-column-start: 1; }
+.col-start-2 { grid-column-start: 2; }
+.col-start-3 { grid-column-start: 3; }
+.col-start-4 { grid-column-start: 4; }
+.col-start-5 { grid-column-start: 5; }
+.col-start-6 { grid-column-start: 6; }
+.col-start-7 { grid-column-start: 7; }
+.col-start-8 { grid-column-start: 8; }
+.col-start-9 { grid-column-start: 9; }
+.col-start-10 { grid-column-start: 10; }
+.col-start-11 { grid-column-start: 11; }
+.col-start-12 { grid-column-start: 12; }
+
+/* Phase 4: Typography */
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans-en);
+  font-size: 18px; /* Optimal reading size */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reading width constraint for optimal legibility */
+article,
+.prose {
+  max-width: 720px; /* Optimal line length: 45-75 characters */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Typography utilities */
+.text-measure {
+  max-width: 65ch;
+}
+
+.text-measure-narrow {
+  max-width: 45ch;
+}
+
+.text-measure-wide {
+  max-width: 75ch;
+}
+
+/* Headings */
+h1 {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--ma-1);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--ma-1);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--ma-0);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--ma-0);
+}
+
+/* Links */
+a {
+  color: var(--color-ultramarine);
+  text-decoration: none;
+  transition: color var(--duration-mechanical);
+}
+
+a:hover {
+  color: var(--color-vermilion);
+}
+
+a:focus-visible {
+  outline: var(--border-focus) solid var(--color-ultramarine);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Code */
+code {
+  font-family: var(--font-mono-en);
+  font-size: 0.9em;
+  background: var(--vermilion-5);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+pre code {
+  background: none;
+  padding: 0;
 }
