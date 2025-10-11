@@ -1,0 +1,149 @@
+/* ABOUTME: Styles for BlogListing asymmetrical grid layout
+   ABOUTME: Implements 12-column grid with Ma spacing and stagger animations */
+
+.container {
+  display: contents; /* Allow children to participate in parent grid */
+}
+
+/* Featured post - columns 1-7 */
+.featured {
+  grid-column: 1 / 8;
+  animation: constructional-appear var(--duration-mechanical) ease-out;
+  animation-delay: calc(var(--stagger-index, 0) * 80ms);
+  animation-fill-mode: backwards;
+}
+
+/* Ma channel - column 8 (breathing space) */
+.maChannel {
+  grid-column: 8 / 9;
+  /* Intentionally empty - represents Ma (間) negative space */
+}
+
+/* Secondary post - columns 9-12 */
+.secondary {
+  grid-column: 9 / 13;
+  animation: constructional-appear var(--duration-mechanical) ease-out;
+  animation-delay: calc(var(--stagger-index, 0) * 80ms);
+  animation-fill-mode: backwards;
+}
+
+/* Standard posts row - full width */
+.standardRow {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--ma-1); /* 24px */
+  margin-top: var(--ma-3); /* 48px */
+}
+
+.standardRow > * {
+  animation: constructional-appear var(--duration-mechanical) ease-out;
+  animation-delay: calc(var(--stagger-index, 0) * 80ms);
+  animation-fill-mode: backwards;
+}
+
+/* Pagination controls */
+.pagination {
+  grid-column: 1 / 13;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--ma-2); /* 32px */
+  margin-top: var(--ma-4); /* 64px */
+  padding: var(--ma-2) 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.paginationButton {
+  padding: var(--ma-0) var(--ma-1); /* 16px 24px */
+  background: transparent;
+  border: 2px solid var(--color-text-secondary);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  transition: all var(--transition-mechanical);
+  border-radius: 2px;
+}
+
+.paginationButton:hover:not(:disabled) {
+  border-color: var(--color-vermilion);
+  color: var(--color-vermilion);
+  transform: translateY(-1px);
+}
+
+.paginationButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.paginationButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.paginationInfo {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+/* Tablet layout - 2 columns */
+@media (max-width: 1024px) {
+  .featured {
+    grid-column: 1 / 7;
+  }
+
+  .maChannel {
+    display: none; /* Hide Ma channel on tablet */
+  }
+
+  .secondary {
+    grid-column: 7 / 13;
+  }
+
+  .standardRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile layout - single column */
+@media (max-width: 768px) {
+  .featured,
+  .secondary {
+    grid-column: 1 / -1;
+  }
+
+  .featured {
+    margin-bottom: var(--ma-1); /* 24px */
+  }
+
+  .standardRow {
+    grid-template-columns: 1fr;
+    gap: var(--ma-1); /* 24px */
+    margin-top: var(--ma-2); /* 32px */
+  }
+
+  .pagination {
+    gap: var(--ma-1); /* 24px */
+    margin-top: var(--ma-2); /* 32px */
+  }
+
+  .paginationButton {
+    padding: var(--ma-0); /* 16px */
+    font-size: var(--font-size-tiny);
+  }
+}
+
+/* Animation keyframes */
+@keyframes constructional-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
