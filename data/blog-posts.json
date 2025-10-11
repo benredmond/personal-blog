@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "slug": "welcome-to-my-blog",
+    "title": "Welcome to My Blog",
+    "excerpt": "Starting a personal blog about AI coding techniques and building with frontier AI. First post: why I'm writing and what to expect.",
+    "content": "# Welcome to My Blog\n\nI'm starting this blog to share my experiences building with AI, coding techniques, and lessons learned shipping real products.\n\n## What to Expect\n\n- Monthly posts about AI-assisted development\n- Case studies from building real products\n- Honest takes on what works (and what doesn't)\n\nCurrently building [koucai.chat](https://koucai.chat) - a Chinese learning app.\n\n## Why Now?\n\nWe're in the middle of a paradigm shift in how software gets built. AI coding tools like Claude Code, Cursor, and Copilot are fundamentally changing the developer workflow. I want to document what I learn as this space evolves.\n\n## Topics I'll Cover\n\n- **AI-assisted development**: Practical techniques for working with LLM coding assistants\n- **Product engineering**: Building and shipping real applications\n- **Developer tools**: Exploring new tools in the AI coding ecosystem\n- **Lessons learned**: Honest reflections on what worked and what didn't\n\n## More Posts Coming Soon\n\nI have a backlog of topics I'm excited to write about:\n\n1. How I built koucai.chat's spaced repetition system\n2. Effective prompt engineering for code generation\n3. The evolution of my development workflow with AI\n4. Debugging strategies when AI-generated code fails\n\nThanks for reading! Check back soon for more posts.\n\n— Ben",
+    "author": "Ben Redmond",
+    "category": "Meta",
+    "tags": ["blogging", "AI", "software engineering"],
+    "date": "2025-01-11T00:00:00Z",
+    "readTime": 2
+  }
+]

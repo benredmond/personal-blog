@@ -1,10 +1,13 @@
 // ABOUTME: Blog listing page using App Router Server Components
-// ABOUTME: Fetches blog posts server-side and passes to Client Component for rendering
+// ABOUTME: Uses lib/blog.ts for direct data access (Next.js 15 best practice)
 
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import MasterGrid from '@/components/layout/MasterGrid';
 import BlogListing from '@/components/blog/BlogListing';
 import EmptyState from '@/components/blog/EmptyState';
+import { getBlogPosts } from '@/lib/blog';
+import { BlogDataError } from '@/lib/types';
 
 export const metadata: Metadata = {
   title: 'Blog | Ben Redmond',
@@ -22,33 +25,31 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
   const currentPage = parseInt(params.page || '1', 10);
 
+  // Validate page number before fetching
+  if (isNaN(currentPage) || currentPage < 1) {
+    redirect('/blog?page=1');
+  }
+
   try {
-    // Server-side data fetching
-    const response = await fetch(
-      `http://localhost:3000/api/blog/posts?page=${currentPage}&limit=${POSTS_PER_PAGE}`,
-      {
-        cache: 'no-store', // Next.js 15 default, but explicit is better
-      }
-    );
+    // Direct data access (no HTTP overhead)
+    const data = getBlogPosts(currentPage, POSTS_PER_PAGE);
+    const totalPages = Math.ceil(data.total / POSTS_PER_PAGE) || 1;
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch blog posts: ${response.status} ${response.statusText}`);
+    // Redirect if page exceeds total pages (but allow empty first page)
+    if (currentPage > totalPages && data.total > 0) {
+      redirect(`/blog?page=${totalPages}`);
     }
-
-    const data = await response.json();
-    const postsArray = Array.isArray(data?.posts) ? data.posts : [];
-    const totalPages = Math.ceil((data?.total || 0) / POSTS_PER_PAGE) || 1;
 
     return (
       <MasterGrid>
-        {postsArray.length === 0 ? (
+        {data.posts.length === 0 && currentPage === 1 ? (
           <EmptyState
             message="No blog posts yet"
             action={{ text: 'Check back soon', href: '/' }}
           />
         ) : (
           <BlogListing
-            posts={postsArray}
+            posts={data.posts}
             currentPage={currentPage}
             totalPages={totalPages}
           />
@@ -56,7 +57,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       </MasterGrid>
     );
   } catch (error) {
-    // Error will be caught by error.tsx boundary
+    // Convert BlogDataError to more user-friendly error
+    if (error instanceof BlogDataError) {
+      throw new Error(`Blog data issue: ${error.message}`);
+    }
     throw error;
   }
 }
