@@ -10,6 +10,9 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import MasterGrid from '@/components/layout/MasterGrid';
+import BlogHeader from '@/components/blog/BlogHeader';
+import SocialShare from '@/components/blog/SocialShare';
+import AuthorBio from '@/components/blog/AuthorBio';
 import styles from '@/components/blog/BlogPostCard.module.css';
 import { getPostBySlug } from '@/lib/blog';
 
@@ -75,8 +78,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <MasterGrid>
-      <article className="col-span-12 md:col-span-8 md:col-start-3 relative py-12">
+    <>
+      <BlogHeader />
+      <MasterGrid>
+        <article className="col-span-12 md:col-span-8 md:col-start-3 relative py-12">
         {/* L-Frame borders for blog identity */}
         <div className={styles.lFrameBorderTop} />
         <div className={styles.lFrameBorderLeft} />
@@ -186,7 +191,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         >
           {post.content}
         </ReactMarkdown>
+
+        {/* Social sharing */}
+        <SocialShare post={{ title: post.title, slug: post.slug }} />
+
+        {/* Author bio */}
+        <AuthorBio />
       </article>
     </MasterGrid>
+    </>
   );
 }

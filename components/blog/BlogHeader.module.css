@@ -1,0 +1,71 @@
+/* ABOUTME: Styles for BlogHeader with responsive navigation */
+/* ABOUTME: Mobile-first design with stacking at 768px breakpoint */
+
+.blogHeader {
+  border-bottom: 2px solid var(--color-light-gray);
+  margin-bottom: var(--ma-2); /* 32px */
+  padding: var(--ma-1) 0; /* 24px vertical */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ma-1); /* 24px horizontal */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem; /* 32px */
+  font-weight: bold;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.nav {
+  display: flex;
+  gap: var(--ma-1); /* 24px */
+  align-items: center;
+}
+
+.navLink {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--font-size-body); /* 18px */
+  transition: color var(--duration-mechanical);
+}
+
+.navLink:hover {
+  color: var(--color-vermilion);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--color-ultramarine);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: var(--ma-0); /* 16px */
+    text-align: center;
+  }
+
+  .title {
+    font-size: 1.5rem; /* Smaller on mobile */
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--ma-0); /* 16px on mobile */
+  }
+
+  .navLink {
+    font-size: var(--font-size-base); /* 16px on mobile */
+  }
+}

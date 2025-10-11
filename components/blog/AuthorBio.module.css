@@ -1,0 +1,59 @@
+/* ABOUTME: Styles for AuthorBio component with Ma spacing principles */
+/* ABOUTME: Uses design system variables for consistent personal blog branding */
+
+.authorBio {
+  margin-top: var(--ma-2); /* 32px */
+  padding: var(--ma-1); /* 24px */
+  border-top: 1px solid var(--color-light-gray);
+}
+
+.heading {
+  font-size: 1.75rem; /* 28px - var(--font-size-h3) equivalent */
+  margin-bottom: var(--ma-0); /* 16px */
+  font-weight: 600;
+}
+
+.bio {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--ma-0); /* 16px */
+  font-size: var(--font-size-body); /* 18px */
+}
+
+.link {
+  color: var(--color-vermilion);
+  text-decoration: underline;
+  transition: opacity var(--duration-mechanical);
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.links {
+  display: flex;
+  gap: var(--ma-1); /* 24px */
+}
+
+.socialLink {
+  color: var(--color-ultramarine);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity var(--duration-mechanical);
+}
+
+.socialLink:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .authorBio {
+    padding: var(--ma-0); /* 16px on mobile */
+  }
+
+  .heading {
+    font-size: 1.5rem; /* Slightly smaller on mobile */
+  }
+}

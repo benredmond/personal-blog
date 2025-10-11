@@ -5,13 +5,15 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import MasterGrid from '@/components/layout/MasterGrid';
 import BlogListing from '@/components/blog/BlogListing';
+import BlogHeader from '@/components/blog/BlogHeader';
 import EmptyState from '@/components/blog/EmptyState';
 import { getBlogPosts } from '@/lib/blog';
 import { BlogDataError } from '@/lib/types';
 
 export const metadata: Metadata = {
-  title: 'Blog | Ben Redmond',
-  description: 'Thoughts on AI, product development, and software engineering',
+  title: 'Ben Redmond - AI Coding & Product Building',
+  description:
+    'Thoughts on building with frontier AI, coding techniques, and shipping real products.',
 };
 
 const POSTS_PER_PAGE = 12;
@@ -41,20 +43,20 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     }
 
     return (
-      <MasterGrid>
-        {data.posts.length === 0 && currentPage === 1 ? (
-          <EmptyState
-            message="No blog posts yet"
-            action={{ text: 'Check back soon', href: '/' }}
-          />
-        ) : (
-          <BlogListing
-            posts={data.posts}
-            currentPage={currentPage}
-            totalPages={totalPages}
-          />
-        )}
-      </MasterGrid>
+      <>
+        <BlogHeader />
+        <MasterGrid>
+          {data.posts.length === 0 && currentPage === 1 ? (
+            <EmptyState message="More posts coming soon" />
+          ) : (
+            <BlogListing
+              posts={data.posts}
+              currentPage={currentPage}
+              totalPages={totalPages}
+            />
+          )}
+        </MasterGrid>
+      </>
     );
   } catch (error) {
     // Convert BlogDataError to more user-friendly error
