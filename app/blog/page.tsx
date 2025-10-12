@@ -9,12 +9,9 @@ import BlogHeader from '@/components/blog/BlogHeader';
 import EmptyState from '@/components/blog/EmptyState';
 import { getBlogPosts } from '@/lib/blog';
 import { BlogDataError } from '@/lib/types';
+import { getBlogListingMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Ben Redmond - AI Coding & Product Building',
-  description:
-    'Thoughts on building with frontier AI, coding techniques, and shipping real products.',
-};
+export const metadata: Metadata = getBlogListingMetadata();
 
 // Enable ISR: Revalidate every 1 hour for cost-effective caching
 // Personal blog with infrequent updates benefits from longer cache (92% cost reduction vs 5-minute cache)

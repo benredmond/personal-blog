@@ -15,6 +15,7 @@ import AuthorBio from '@/components/blog/AuthorBio';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import styles from '@/components/blog/StrataPost.module.css';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
+import { getBlogPostMetadata } from '@/lib/metadata';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -50,7 +51,7 @@ const formatDate = (dateString: string): string => {
 };
 
 /**
- * Generate metadata for SEO
+ * Generate metadata for SEO and social sharing
  * Uses direct data access (Next.js 15 automatically deduplicates with page component)
  */
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
@@ -64,22 +65,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  return {
-    title: `${post.title} | Ben Redmond`,
-    description: post.excerpt || post.title,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt || post.title,
-      type: 'article',
-      publishedTime: post.date,
-      authors: post.author ? [post.author] : undefined,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt || post.title,
-    },
-  };
+  return getBlogPostMetadata(post);
 }
 
 /**
