@@ -9,7 +9,8 @@ export default function AuthorBio() {
     <div className={styles.authorBio}>
       <h3 className={styles.heading}>About Me</h3>
       <p className={styles.bio}>
-        Builder and software engineer exploring frontier AI coding techniques. Currently building{' '}
+        Product engineer shipping AI applications on the side while helping MongoDB adopt AI at
+        enterprise scale. Currently building{' '}
         <a
           href="https://koucai.chat"
           className={styles.link}
@@ -18,8 +19,8 @@ export default function AuthorBio() {
         >
           koucai.chat
         </a>
-        , an AI native Chinese learning app. Writing about AI-assisted development and product
-        building.
+        , a Chinese learning app with adaptive AI tutors. I write about what works (and what breaks)
+        when building with AI in production.
       </p>
       <div className={styles.links}>
         <a
