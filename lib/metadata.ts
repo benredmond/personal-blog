@@ -24,6 +24,23 @@ export function getSiteUrl(): string {
 }
 
 /**
+ * Escape special characters for safe XML output
+ * Handles the 5 XML entities plus CDATA end sequence
+ *
+ * @param unsafe - String that may contain XML special characters
+ * @returns XML-safe string with entities escaped
+ */
+export function escapeXml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, '&amp;')   // Must be first to avoid double-escaping
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+    .replace(/]]>/g, ']]&gt;'); // CDATA end sequence
+}
+
+/**
  * Get OpenGraph image URL with fallback to default
  * Returns post's cover image if present, otherwise fallback to og-default.jpg
  */
