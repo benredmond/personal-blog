@@ -275,6 +275,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide default scrollbar - replaced with vermilion progress rail */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
 /* Reading width constraint for optimal legibility */
 article,
 .prose {

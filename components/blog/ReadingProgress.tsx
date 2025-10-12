@@ -1,5 +1,6 @@
-// ABOUTME: Reading progress indicator for blog posts - tracks scroll position
+// ABOUTME: Reading progress rail for blog posts - vertical scroll indicator
 // ABOUTME: Client Component with performance-optimized scroll tracking (RAF + passive listeners)
+// ABOUTME: Scandinavian Strata design: 2px vermilion rail on right edge
 
 'use client';
 
@@ -7,9 +8,10 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './ReadingProgress.module.css';
 
 /**
- * Reading progress bar component
- * Shows scroll progress through article content at top of viewport
+ * Vertical reading progress rail component
+ * Shows scroll progress as a vermilion line growing from top to bottom on right edge
  * Performance-optimized with requestAnimationFrame and passive event listeners
+ * Aligns with Scandinavian Strata design: minimal, functional, sharp geometry
  */
 export default function ReadingProgress() {
   const progressRef = useRef<HTMLDivElement>(null);
@@ -32,8 +34,8 @@ export default function ReadingProgress() {
       const height = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = height > 0 ? Math.min(100, (winScroll / height) * 100) : 0;
 
-      // Use transform for GPU acceleration (better performance than width)
-      progressRef.current.style.transform = `scaleX(${scrolled / 100})`;
+      // Use scaleY transform for vertical growth (GPU accelerated)
+      progressRef.current.style.transform = `scaleY(${scrolled / 100})`;
       ticking = false;
     };
 
@@ -74,7 +76,7 @@ export default function ReadingProgress() {
       <div
         ref={progressRef}
         className={styles.bar}
-        style={{ transformOrigin: 'left', transform: 'scaleX(0)' }}
+        style={{ transformOrigin: 'top', transform: 'scaleY(0)' }}
       />
     </div>
   );
