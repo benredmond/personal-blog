@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#fffef9"/>
+  <!-- "B" letterform -->
+  <rect x="160" y="112" width="48" height="208" fill="#0a0a0a"/>
+  <rect x="208" y="112" width="96" height="48" fill="#0a0a0a"/>
+  <rect x="208" y="192" width="96" height="48" fill="#0a0a0a"/>
+  <rect x="208" y="272" width="96" height="48" fill="#0a0a0a"/>
+  <rect x="304" y="160" width="32" height="32" fill="#0a0a0a"/>
+  <rect x="304" y="240" width="32" height="32" fill="#0a0a0a"/>
+  <!-- Vermilion underline -->
+  <rect x="96" y="368" width="320" height="48" fill="#ff3a2d"/>
+</svg>
