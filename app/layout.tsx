@@ -5,11 +5,17 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap", // Prevent FOIT (Flash of Invisible Text)
+  preload: true, // Prioritize loading primary font
+  adjustFontFallback: true, // Match fallback metrics to prevent CLS
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap", // Prevent FOIT
+  preload: false, // Secondary font, load after critical resources
+  adjustFontFallback: true, // Reduce layout shift when font loads
 });
 
 export const metadata: Metadata = {

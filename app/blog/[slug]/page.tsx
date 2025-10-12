@@ -13,11 +13,28 @@ import MasterGrid from '@/components/layout/MasterGrid';
 import BlogHeader from '@/components/blog/BlogHeader';
 import AuthorBio from '@/components/blog/AuthorBio';
 import styles from '@/components/blog/StrataPost.module.css';
-import { getPostBySlug } from '@/lib/blog';
+import { getPostBySlug, getAllPosts } from '@/lib/blog';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
+
+/**
+ * Pre-render all blog posts at build time for optimal performance
+ * New posts can still be generated on-demand with dynamicParams
+ */
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+// Enable ISR: Revalidate every 1 hour (cost-effective for personal blog with infrequent updates)
+export const revalidate = 3600;
+
+// Allow new posts to be generated on-demand (not just at build time)
+export const dynamicParams = true;
 
 /**
  * Format date as "MMM DD, YYYY"

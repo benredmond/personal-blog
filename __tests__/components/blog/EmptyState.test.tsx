@@ -34,6 +34,6 @@ describe('EmptyState', () => {
     );
 
     const emptyStateElement = container.firstChild;
-    expect(emptyStateElement).toHaveClass('emptyState');
+    expect(emptyStateElement).toHaveClass('container');
   });
 });

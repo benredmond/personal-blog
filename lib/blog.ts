@@ -1,6 +1,7 @@
 // ABOUTME: Blog data access layer (repository pattern)
 // ABOUTME: Pure functions for fetching, filtering, and validating blog posts from JSON storage
 
+import { cache } from 'react';
 import postsData from '@/data/blog-posts.json';
 import {
   BlogPost,
@@ -12,10 +13,25 @@ import {
 } from './types';
 
 /**
+ * Module-level cache for validated posts
+ * Cleared in development mode to prevent stale data during HMR
+ */
+let cachedPosts: BlogPost[] | null = null;
+
+/**
  * Load and validate all blog posts from JSON file
  * Throws BlogDataError if any post is invalid
+ *
+ * Uses module-level caching in production for performance
+ * Cache bypassed in development for immediate content updates
  */
 function loadPosts(): BlogPost[] {
+  // In development, skip cache to see content changes immediately
+  const isDev = process.env.NODE_ENV === 'development';
+
+  if (!isDev && cachedPosts !== null) {
+    return cachedPosts;
+  }
   try {
     // Normalize and validate all posts
     const posts = postsData.map((post, index) => {
@@ -49,6 +65,8 @@ function loadPosts(): BlogPost[] {
       slugs.add(post.slug);
     });
 
+    // Cache the validated posts (production only due to isDev check above)
+    cachedPosts = posts;
     return posts;
   } catch (error) {
     if (error instanceof BlogDataError) {
@@ -61,11 +79,14 @@ function loadPosts(): BlogPost[] {
 /**
  * Get all posts sorted by date (newest first)
  * Used internally and for RSS feed generation
+ *
+ * Wrapped with React cache() for request-level deduplication
+ * (e.g., generateMetadata() and page component share same data)
  */
-export function getAllPosts(): BlogPost[] {
+export const getAllPosts = cache((): BlogPost[] => {
   const posts = loadPosts();
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
+});
 
 /**
  * Get paginated blog posts (without full content for performance)
@@ -74,8 +95,10 @@ export function getAllPosts(): BlogPost[] {
  * @param limit - Number of posts per page (1-100)
  * @returns Paginated posts and total count
  * @throws BlogDataError if page/limit parameters are invalid
+ *
+ * Wrapped with React cache() for request-level deduplication
  */
-export function getBlogPosts(page: number = 1, limit: number = 12): BlogListingResponse {
+export const getBlogPosts = cache((page: number = 1, limit: number = 12): BlogListingResponse => {
   // Validate pagination parameters
   if (!Number.isInteger(page) || page < 1 || page > 10000) {
     throw new BlogDataError('Page must be an integer between 1 and 10000');
@@ -107,15 +130,17 @@ export function getBlogPosts(page: number = 1, limit: number = 12): BlogListingR
     posts: postsWithoutContent,
     total,
   };
-}
+});
 
 /**
  * Get a single blog post by slug
  *
  * @param slug - URL-safe post identifier
  * @returns Blog post with full content, or null if not found
+ *
+ * Wrapped with React cache() for request-level deduplication
  */
-export function getPostBySlug(slug: string): BlogPost | null {
+export const getPostBySlug = cache((slug: string): BlogPost | null => {
   if (!slug || typeof slug !== 'string') {
     return null;
   }
@@ -124,7 +149,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const post = allPosts.find((p) => p.slug === slug);
 
   return post || null;
-}
+});
 
 /**
  * Get total number of blog posts
