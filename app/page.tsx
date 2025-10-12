@@ -64,7 +64,7 @@ export default function HomePage() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/benredmond"
+                href="https://linkedin.com/in/ben-redmond1"
                 className={styles.socialLink}
                 target="_blank"
                 rel="noopener noreferrer"
