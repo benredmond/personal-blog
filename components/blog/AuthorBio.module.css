@@ -2,8 +2,8 @@
 /* ABOUTME: Uses design system variables for consistent personal blog branding */
 
 .authorBio {
-  margin-top: var(--ma-2); /* 32px */
-  padding: var(--ma-1); /* 24px */
+  padding-top: var(--ma-3); /* 48px */
+  padding-bottom: var(--ma-1); /* 24px */
   border-top: 1px solid var(--color-light-gray);
 }
 

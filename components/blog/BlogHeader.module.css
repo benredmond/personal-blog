@@ -1,10 +1,11 @@
-/* ABOUTME: Styles for BlogHeader with responsive navigation */
-/* ABOUTME: Mobile-first design with stacking at 768px breakpoint */
+/* ABOUTME: Styles for BlogHeader with Neo-Bauhaus architectural elements */
+/* ABOUTME: Vermilion accent line, refined typography, geometric precision */
 
 .blogHeader {
-  border-bottom: 2px solid var(--color-light-gray);
-  margin-bottom: var(--ma-2); /* 32px */
-  padding: var(--ma-1) 0; /* 24px vertical */
+  position: relative;
+  margin-bottom: var(--ma-5); /* 80px - much more presence */
+  padding: var(--ma-3) 0 var(--ma-2) 0; /* 48px top, 32px bottom - more vertical space */
+  border-bottom: 1px solid var(--color-light-gray);
 }
 
 .container {
@@ -17,55 +18,100 @@
 }
 
 .title {
-  font-size: 2rem; /* 32px */
-  font-weight: bold;
+  position: relative;
+  font-size: 36px; /* Larger, more prominent */
+  font-weight: 900; /* Ultra-bold for character */
   margin: 0;
+  padding-bottom: 8px;
   color: var(--color-text-primary);
+  letter-spacing: -0.03em; /* Tighter for bold weight */
+}
+
+/* Prominent vermilion accent spanning full name width */
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Full width of name */
+  height: 3px; /* Thicker accent */
+  background: var(--color-vermilion);
 }
 
 .nav {
   display: flex;
-  gap: var(--ma-1); /* 24px */
+  gap: var(--ma-2); /* 32px - more breathing room */
   align-items: center;
 }
 
 .navLink {
   color: var(--color-text-primary);
   text-decoration: none;
-  font-weight: 500;
-  font-size: var(--font-size-body); /* 18px */
-  transition: color var(--duration-mechanical);
+  font-weight: 600; /* Increased from 500 for more presence */
+  font-size: 16px;
+  transition: color 200ms var(--construct-ease-mechanical);
+  position: relative;
+  padding-bottom: 4px; /* Room for underline */
+}
+
+/* Underline on hover - starts from center */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px; /* Thicker underline to match header accent */
+  background: var(--color-vermilion);
+  transition: width 200ms var(--construct-ease-mechanical);
 }
 
 .navLink:hover {
   color: var(--color-vermilion);
 }
 
+.navLink:hover::after {
+  width: 100%;
+}
+
 .navLink:focus-visible {
   outline: 2px solid var(--color-ultramarine);
   outline-offset: 4px;
-  border-radius: 2px;
+  border-radius: 0; /* Sharp corners, Neo-Bauhaus */
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+  .blogHeader {
+    margin-bottom: var(--ma-3); /* Less margin on mobile */
+    padding: var(--ma-2) 0; /* Reduced padding */
+  }
+
   .container {
     flex-direction: column;
-    gap: var(--ma-0); /* 16px */
+    gap: var(--ma-1); /* 24px gap */
     text-align: center;
   }
 
   .title {
-    font-size: 1.5rem; /* Smaller on mobile */
+    font-size: 28px; /* Still prominent but not overwhelming */
+    font-weight: 900;
+  }
+
+  .title::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Slightly narrower on mobile */
   }
 
   .nav {
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--ma-0); /* 16px on mobile */
+    gap: var(--ma-1); /* 24px on mobile for easier touch targets */
   }
 
   .navLink {
-    font-size: var(--font-size-base); /* 16px on mobile */
+    font-size: 15px;
   }
 }

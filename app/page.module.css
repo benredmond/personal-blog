@@ -1,0 +1,235 @@
+/* ABOUTME: Styles for home page with Scandinavian Strata design */
+/* ABOUTME: Typography-first, generous Ma spacing, restrained vermilion accents */
+
+.main {
+  opacity: 0;
+  animation: settleIn 400ms cubic-bezier(0.16, 1, 0.3, 1) 100ms forwards;
+}
+
+@keyframes settleIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero section */
+.hero {
+  margin-bottom: var(--ma-5); /* 80px */
+}
+
+.title {
+  position: relative;
+  font-size: 50px; /* Large, confident */
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 var(--ma-2) 0; /* 0 0 32px 0 */
+  color: var(--color-text-primary);
+  padding-bottom: 16px;
+}
+
+/* Vermilion underline under hero title */
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-vermilion);
+}
+
+.intro {
+  font-size: 21px; /* Larger intro text */
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  max-width: 90%;
+}
+
+/* Section spacing */
+.hero,
+.currentWork,
+.blog,
+.connect {
+  margin-bottom: var(--ma-5); /* 80px between sections */
+}
+
+.sectionTitle {
+  position: relative;
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 0 0 var(--ma-2) 0; /* 0 0 32px 0 */
+  padding-bottom: 8px;
+}
+
+/* Subtle vermilion accent under section titles */
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--color-vermilion);
+  opacity: 0.3;
+}
+
+/* Current work section */
+.project {
+  padding-left: 24px; /* Subtle indent */
+}
+
+.projectName {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.projectLink {
+  color: var(--color-ultramarine);
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.projectLink:hover {
+  color: var(--color-vermilion);
+  text-decoration: underline;
+}
+
+.projectDescription {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Blog section */
+.blogDescription {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  margin-bottom: var(--ma-1); /* 24px */
+}
+
+.blogLink {
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-ultramarine);
+  text-decoration: none;
+  transition: color 200ms;
+  position: relative;
+}
+
+/* Growing underline on hover */
+.blogLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-vermilion);
+  transition: width 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blogLink:hover {
+  color: var(--color-vermilion);
+}
+
+.blogLink:hover::after {
+  width: 100%;
+}
+
+/* Connect section */
+.socialLinks {
+  display: flex;
+  gap: var(--ma-2); /* 32px */
+}
+
+.socialLink {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-ultramarine);
+  text-decoration: none;
+  transition: color 200ms;
+  position: relative;
+}
+
+.socialLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-vermilion);
+  transition: width 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.socialLink:hover {
+  color: var(--color-vermilion);
+}
+
+.socialLink:hover::after {
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .title {
+    font-size: 36px;
+  }
+
+  .intro {
+    font-size: 18px;
+    max-width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .hero,
+  .currentWork,
+  .blog,
+  .connect {
+    margin-bottom: var(--ma-4); /* 64px on tablet */
+  }
+}
+
+@media (max-width: 639px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .intro {
+    font-size: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 21px;
+  }
+
+  .hero,
+  .currentWork,
+  .blog,
+  .connect {
+    margin-bottom: var(--ma-3); /* 48px on mobile */
+  }
+
+  .project {
+    padding-left: 0; /* Remove indent on mobile */
+  }
+
+  .socialLinks {
+    flex-direction: column;
+    gap: var(--ma-1); /* 24px vertical */
+  }
+}
