@@ -15,7 +15,7 @@ export interface EmptyStateProps {
 
 const EmptyState: React.FC<EmptyStateProps> = ({ message, action }) => {
   return (
-    <div className={styles.emptyState}>
+    <div className={styles.container}>
       <p className={styles.message}>{message}</p>
       {action && (
         <Link href={action.href} className={styles.actionButton}>

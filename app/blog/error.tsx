@@ -5,6 +5,7 @@
 
 import { useEffect } from 'react';
 import MasterGrid from '@/components/layout/MasterGrid';
+import styles from './error.module.css';
 
 export default function BlogError({
   error,
@@ -19,17 +20,20 @@ export default function BlogError({
 
   return (
     <MasterGrid>
-      <div className="error-state bg-red-50 border border-red-200 rounded-lg p-8 my-8">
-        <h2 className="text-2xl font-bold text-red-900 mb-4">
-          Error Loading Blog Posts
-        </h2>
-        <p className="text-red-700 mb-6">{error.message}</p>
-        <button
-          onClick={reset}
-          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-        >
-          Try Again
-        </button>
+      <div className={styles.errorContainer}>
+        <div className={styles.errorCard}>
+          {/* L-Frame borders */}
+          <div className={`${styles.lFrameBorder} ${styles.lFrameBorderTop}`} aria-hidden="true" />
+          <div className={`${styles.lFrameBorder} ${styles.lFrameBorderLeft}`} aria-hidden="true" />
+
+          <div className={styles.contentContainer}>
+            <h2 className={styles.title}>Error Loading Blog Posts</h2>
+            <p className={styles.message}>{error.message}</p>
+            <button onClick={reset} className={styles.retryButton}>
+              Try Again
+            </button>
+          </div>
+        </div>
       </div>
     </MasterGrid>
   );

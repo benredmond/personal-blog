@@ -1,0 +1,101 @@
+/* ABOUTME: Styles for blog error boundary with Neo-Bauhaus design */
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ma-5) var(--ma-3); /* 80px 48px */
+  text-align: center;
+  grid-column: 1 / -1; /* Span full grid width */
+}
+
+.errorCard {
+  position: relative;
+  background: var(--color-off-white);
+  padding: var(--ma-3); /* 48px */
+  max-width: 600px;
+  width: 100%;
+}
+
+/* L-Frame borders */
+.lFrameBorder {
+  position: absolute;
+  background: var(--color-vermilion);
+  pointer-events: none;
+}
+
+.lFrameBorderTop {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.lFrameBorderLeft {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--ma-1) 0; /* 0 0 24px 0 */
+}
+
+.message {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--ma-2); /* 32px */
+  line-height: 1.6;
+}
+
+.retryButton {
+  display: inline-block;
+  padding: var(--ma-0) var(--ma-1); /* 16px 24px */
+  background-color: var(--color-vermilion);
+  color: var(--color-background);
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  border-radius: 2px;
+  transition: all var(--transition-mechanical);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-small);
+  cursor: pointer;
+}
+
+.retryButton:hover {
+  background-color: var(--color-vermilion-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.retryButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .errorContainer {
+    padding: var(--ma-3) var(--ma-1); /* 48px 24px */
+  }
+
+  .errorCard {
+    padding: var(--ma-2); /* 32px */
+  }
+
+  .title {
+    font-size: var(--font-size-h4);
+  }
+}
