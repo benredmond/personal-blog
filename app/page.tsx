@@ -15,43 +15,39 @@ export default function HomePage() {
         <main className={`col-span-12 md:col-span-8 md:col-start-3 ${styles.main}`}>
           {/* Hero section */}
           <section className={styles.hero}>
-            <h1 className={styles.title}>Building with AI, one product at a time.</h1>
+            <h1 className={styles.title}>Building AI-native products in production.</h1>
             <p className={styles.intro}>
-              I&apos;m Ben, a software engineer exploring frontier AI coding techniques and building
-              real products. I write about what I learn along the way.
+              I&apos;m Ben, a product engineer shipping AI applications on the side while helping
+              MongoDB adopt AI at enterprise scale. Currently building{' '}
+              <a
+                href="https://koucai.chat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.inlineLink}
+              >
+                koucai.chat
+              </a>
+              —a Chinese learning app where students practice conversations with adaptive AI tutors.
             </p>
-          </section>
-
-          {/* Current work */}
-          <section className={styles.currentWork}>
-            <h2 className={styles.sectionTitle}>What I&apos;m Building</h2>
-            <div className={styles.project}>
-              <h3 className={styles.projectName}>
-                <a
-                  href="https://koucai.chat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectLink}
-                >
-                  koucai.chat
-                </a>
-              </h3>
-              <p className={styles.projectDescription}>
-                An AI-native Chinese learning app. Helps learners practice conversations with
-                adaptive AI tutors while building fundamental learning of characters.
-              </p>
-            </div>
           </section>
 
           {/* Blog CTA */}
           <section className={styles.blog}>
             <h2 className={styles.sectionTitle}>Writing</h2>
             <p className={styles.blogDescription}>
-              Monthly posts about AI-assisted development, product engineering, and lessons learned
-              shipping real applications.
+              I write about what works (and what breaks) when building with AI:
+            </p>
+            <ul className={styles.topicList}>
+              <li>Structuring code to be readable by AI agents, not just human reviewers</li>
+              <li>When to ship, iterate, or kill: managing AI-assisted build cycles</li>
+              <li>When to trust AI-generated code (and when the stakes are too high)</li>
+              <li>Architecture decisions that seem small but compound over time</li>
+            </ul>
+            <p className={styles.blogSubtext}>
+              Monthly posts for AI product builders who care about what actually works.
             </p>
             <Link href="/blog" className={styles.blogLink}>
-              Read the blog
+              Read the blog →
             </Link>
           </section>
 

@@ -52,9 +52,20 @@
   max-width: 90%;
 }
 
+.inlineLink {
+  color: var(--color-ultramarine);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 200ms;
+}
+
+.inlineLink:hover {
+  color: var(--color-vermilion);
+  text-decoration: underline;
+}
+
 /* Section spacing */
 .hero,
-.currentWork,
 .blog,
 .connect {
   margin-bottom: var(--ma-5); /* 80px between sections */
@@ -116,7 +127,33 @@
   font-size: 18px;
   line-height: 1.7;
   color: var(--color-text-primary);
-  margin-bottom: var(--ma-1); /* 24px */
+  margin-bottom: var(--ma-1); /* 16px */
+}
+
+.topicList {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--ma-2) 0; /* 32px bottom margin */
+  padding-left: 24px;
+  list-style-type: disc;
+}
+
+.topicList li {
+  margin-bottom: 12px;
+  padding-left: 8px;
+}
+
+.topicList li:last-child {
+  margin-bottom: 0;
+}
+
+.blogSubtext {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  margin-bottom: var(--ma-1); /* 16px */
+  font-weight: 400;
 }
 
 .blogLink {
@@ -200,7 +237,6 @@
   }
 
   .hero,
-  .currentWork,
   .blog,
   .connect {
     margin-bottom: var(--ma-4); /* 64px on tablet */
@@ -221,14 +257,13 @@
   }
 
   .hero,
-  .currentWork,
   .blog,
   .connect {
     margin-bottom: var(--ma-3); /* 48px on mobile */
   }
 
-  .project {
-    padding-left: 0; /* Remove indent on mobile */
+  .topicList {
+    padding-left: 20px; /* Less indent on mobile */
   }
 
   .socialLinks {
