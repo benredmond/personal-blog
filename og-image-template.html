@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OG Image Template - 1200x630px</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #1a1a1a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    }
+
+    .og-image {
+      width: 1200px;
+      height: 630px;
+      background: #fffef9; /* Off-white from Neo-Bauhaus design */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Vermilion accent line (horizontal) */
+    .accent-line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 4px;
+      background: #ff3a2d; /* Vermilion */
+      margin-bottom: 40px;
+    }
+
+    .content {
+      text-align: center;
+      z-index: 1;
+    }
+
+    .name {
+      font-size: 96px;
+      font-weight: 900; /* Ultra-bold, matching Scandinavian Strata header */
+      color: #000;
+      letter-spacing: -2px;
+      margin: 0 0 32px 0;
+      line-height: 1;
+    }
+
+    .subtitle {
+      font-size: 36px;
+      font-weight: 300;
+      color: #333;
+      letter-spacing: 0.5px;
+      margin: 48px 0 0 0;
+    }
+
+    /* Optional: L-Frame border (top + left) - subtle architectural hint */
+    .l-frame-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ff3a2d;
+    }
+
+    .l-frame-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: #ff3a2d;
+    }
+
+    /* Instructions */
+    .instructions {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      font-size: 14px;
+      line-height: 1.6;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .instructions h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+
+    .instructions ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .instructions code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .hide-instructions .instructions {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="og-image">
+    <!-- L-Frame borders (optional - comment out if you prefer minimal) -->
+    <div class="l-frame-top"></div>
+    <div class="l-frame-left"></div>
+
+    <div class="content">
+      <h1 class="name">BEN REDMOND</h1>
+      <div class="accent-line"></div>
+      <p class="subtitle">AI Coding & Product Building</p>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h3>📸 Screenshot Instructions</h3>
+    <ol>
+      <li>Press <code>H</code> to hide these instructions</li>
+      <li>Use a screenshot tool to capture ONLY the white rectangle:
+        <ul>
+          <li><strong>Mac:</strong> Cmd+Shift+4, then drag to select the white box</li>
+          <li><strong>Chrome DevTools:</strong> Right-click the white box → "Capture node screenshot"</li>
+        </ul>
+      </li>
+      <li>Save as <code>og-default.jpg</code></li>
+      <li>Move to: <code>public/images/og-default.jpg</code></li>
+      <li>Verify dimensions: <code>file public/images/og-default.jpg</code><br>(should show "1200 x 630")</li>
+    </ol>
+    <p><strong>Tip:</strong> Chrome DevTools method gives exact 1200x630px automatically!</p>
+  </div>
+
+  <script>
+    // Press 'H' to hide instructions
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'h' || e.key === 'H') {
+        document.body.classList.toggle('hide-instructions');
+      }
+    });
+  </script>
+</body>
+</html>

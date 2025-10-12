@@ -1,3 +1,8 @@
+ ---
+ description: "Chat with Yuna about design"
+ argument-hint: "[thoughts]"
+ ---
+
 # Quality.Design - UI/UX Design Review with Yuna
 **Domain**: Quality Assurance
 **Purpose**: Get direct, insightful design feedback from Yuna, Senior Designer (with personality)

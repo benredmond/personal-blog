@@ -15,9 +15,7 @@ export default function HomePage() {
         <main className={`col-span-12 md:col-span-8 md:col-start-3 ${styles.main}`}>
           {/* Hero section */}
           <section className={styles.hero}>
-            <h1 className={styles.title}>
-              Building with AI, one product at a time.
-            </h1>
+            <h1 className={styles.title}>Building with AI, one product at a time.</h1>
             <p className={styles.intro}>
               I&apos;m Ben, a software engineer exploring frontier AI coding techniques and building
               real products. I write about what I learn along the way.
@@ -39,9 +37,8 @@ export default function HomePage() {
                 </a>
               </h3>
               <p className={styles.projectDescription}>
-                A Chinese learning app built with frontier AI. Helps learners practice
-                conversations with adaptive AI tutors and build vocabulary with spaced
-                repetition.
+                An AI-native Chinese learning app. Helps learners practice conversations with
+                adaptive AI tutors while building fundamental learning of characters.
               </p>
             </div>
           </section>
@@ -50,8 +47,8 @@ export default function HomePage() {
           <section className={styles.blog}>
             <h2 className={styles.sectionTitle}>Writing</h2>
             <p className={styles.blogDescription}>
-              Monthly posts about AI-assisted development, product engineering, and lessons
-              learned shipping real applications.
+              Monthly posts about AI-assisted development, product engineering, and lessons learned
+              shipping real applications.
             </p>
             <Link href="/blog" className={styles.blogLink}>
               Read the blog
