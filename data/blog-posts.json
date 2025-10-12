@@ -8,7 +8,19 @@
     "author": "Ben Redmond",
     "category": "Meta",
     "tags": ["blogging", "AI", "software engineering"],
-    "date": "2025-01-11T00:00:00Z",
+    "date": "2025-10-12T00:00:00Z",
     "readTime": 2
+  },
+  {
+    "id": "2",
+    "slug": "thinking-doing",
+    "title": "Thinking <-> Doing",
+    "excerpt": "The sixteenth draft of my Chinese dictionary lies abandoned in a folder deep within my repo. Two weeks of work, genuinely good code, completely functional. Pre-AI me would have shipped it just to justify the time spent. Post-AI me deleted it and started building something better. That folder of abandoned ideas tells the real story of how AI changes everything.",
+    "content": "— Ben",
+    "author": "Ben Redmond",
+    "category": "Thoughts",
+    "tags": ["blogging", "AI", "software engineering"],
+    "date": "2025-10-12T10:00:00Z",
+    "readTime": 10
   }
 ]

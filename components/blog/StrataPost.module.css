@@ -91,7 +91,7 @@
 }
 
 /* Extend underline on hover */
-.post:hover .title::after {
+.title:hover::after {
   width: 50%; /* Grows to 50% on hover */
 }
 
@@ -243,6 +243,12 @@
   width: 40%; /* Accent, not barrier - matches home page hero */
   height: 2px;
   background-color: var(--color-vermilion);
+  transition: width 200ms var(--construct-ease-mechanical);
+}
+
+/* Extend underline on hover */
+.postTitle:hover::after {
+  width: 50%; /* Grows to 50% on hover */
 }
 
 /* Markdown content styling */
