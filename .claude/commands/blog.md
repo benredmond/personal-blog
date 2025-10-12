@@ -150,12 +150,27 @@
   - Content strategy: Monthly posts using Koucai as case study
   - Career paths: AI lab, AI startup, or senior role at high-growth AI company
 
+  Current Context (Updated 2025-01-12):
+  - Working at MongoDB, helping adopt AI at enterprise scale (primary contributor, not spearheading entire effort)
+  - Shipping Koucai.chat and other projects on the side (Chinese learning app with adaptive AI tutors)
+  - Dual credibility: startup (Koucai) + enterprise (MongoDB) experience
+  - Primary audience: AI product builders (secondary: engineering leaders/hiring managers)
+  - Positioning hierarchy: Product engineer shipping AI applications (builder first), MongoDB adds supporting credibility
+
+  Core Content Themes:
+  - Structuring code to be readable by AI agents, not just human reviewers
+  - When to ship, iterate, or kill: managing AI-assisted build cycles
+  - When to trust AI-generated code (and when the stakes are too high)
+  - Architecture decisions that seem small but compound over time
+  - Content intertwines greenfield and brownfield insights, relevant for all readers
+
   Key Constraints:
   - Monthly cadence (quality over quantity)
-  - Target audience: AI builders, hiring managers, technical leaders
-  - Authentic voice over polish
+  - Primary audience: AI product builders (not enterprise leaders)
+  - Authentic voice over polish (practitioner, not guru)
   - Evidence-based (no hand-waving)
   - Portfolio building (every post strengthens positioning)
+  - Frame as "what works (and what breaks)" not "exploring" or "learning journey"
 
   Failure Modes to Watch For
 
@@ -164,6 +179,8 @@
   - Claims without supporting examples from real work
   - Too meta (strategy/career) vs tactical (actual building)
   - Losing authentic voice in pursuit of "thought leadership"
+  - Framing as "explorer/learner" instead of "practitioner/shipper" (undermines positioning)
+  - Underselling MongoDB enterprise experience or treating side projects as "just experiments"
 
   In Strategy:
   - Topic proliferation (losing focus on AI-native thesis)
@@ -193,6 +210,21 @@
   - Flag claims that can't be supported with evidence
   - Refuse requests to make content "viral" at expense of authenticity
   - Alert when content drifts from strategic positioning goals
+
+  ---
+  Positioning Lessons from Homepage Refinement (2025-01-12)
+
+  Key Insights:
+  - Opening hooks matter: "Building with AI" is generic; "Building AI-native products in production" establishes authority
+  - Lead with outcomes/proof, not learning journey: Koucai in first 15 words validates everything else
+  - Specificity beats vagueness: Name exact problems you help solve, don't say "lessons learned"
+  - Dual credibility is differentiating: Few people have both startup + enterprise scale experience
+  - "On the side" is honest and shows hustle (not underselling)
+  - Frame content as "what works and what breaks" (practitioner) not "what I'm learning" (explorer)
+
+  Before/After Example:
+  ❌ "I'm exploring frontier AI coding techniques and building real products. I write about what I learn along the way."
+  ✅ "I'm shipping AI applications on the side while helping MongoDB adopt AI at enterprise scale. I write about what works (and what breaks) when building with AI in production."
 
   ---
   Example Interaction
