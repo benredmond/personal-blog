@@ -1,68 +1,75 @@
-/* ABOUTME: Styles for BlogHeader with Neo-Bauhaus architectural elements */
-/* ABOUTME: Vermilion accent line, refined typography, geometric precision */
+/* ABOUTME: Floating Name design - Inverted hierarchy */
+/* ABOUTME: Name top-right, nav bottom-left - Japanese aesthetic */
 
 .blogHeader {
   position: relative;
-  margin-bottom: var(--ma-5); /* 80px - much more presence */
-  padding: var(--ma-3) 0 var(--ma-2) 0; /* 48px top, 32px bottom - more vertical space */
-  border-bottom: 1px solid var(--color-light-gray);
+  padding: var(--ma-4) 0; /* 64px vertical padding */
+  background: #f7f5f2; /* Warm gray canvas */
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--ma-1); /* 24px horizontal */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 0 var(--ma-3); /* 48px horizontal */
+  position: relative;
+  min-height: 140px; /* Ensure diagonal space */
+}
+
+/* Name floats top-right */
+.nameFloat {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
 }
 
 .title {
-  position: relative;
-  font-size: 36px; /* Larger, more prominent */
-  font-weight: 900; /* Ultra-bold for character */
+  font-size: 28px;
+  font-weight: 600; /* Lighter weight for floating effect */
   margin: 0;
-  padding-bottom: 8px;
   color: var(--color-text-primary);
-  letter-spacing: -0.03em; /* Tighter for bold weight */
+  letter-spacing: -0.01em;
+  padding-bottom: 8px;
 }
 
-/* Prominent vermilion accent spanning full name width */
-.title::after {
-  content: '';
+/* Vermilion underline - aligned right */
+.underline {
+  display: block;
+  width: 60%;
+  height: 2px;
+  background: var(--color-vermilion);
+  margin-top: 8px;
+  margin-left: auto; /* Right-aligned */
+}
+
+/* Nav anchors bottom-left */
+.navAnchor {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%; /* Full width of name */
-  height: 3px; /* Thicker accent */
-  background: var(--color-vermilion);
-}
-
-.nav {
   display: flex;
-  gap: var(--ma-2); /* 32px - more breathing room */
+  gap: var(--ma-2); /* 32px between links */
   align-items: center;
 }
 
 .navLink {
+  position: relative;
   color: var(--color-text-primary);
   text-decoration: none;
-  font-weight: 600; /* Increased from 500 for more presence */
   font-size: 16px;
+  font-weight: 500;
   transition: color 200ms var(--construct-ease-mechanical);
-  position: relative;
-  padding-bottom: 4px; /* Room for underline */
+  padding-bottom: 4px;
 }
 
-/* Underline on hover - starts from center */
+/* Simple underline slide */
 .navLink::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 0;
-  height: 2px; /* Thicker underline to match header accent */
+  height: 2px;
   background: var(--color-vermilion);
   transition: width 200ms var(--construct-ease-mechanical);
 }
@@ -78,37 +85,47 @@
 .navLink:focus-visible {
   outline: 2px solid var(--color-ultramarine);
   outline-offset: 4px;
-  border-radius: 0; /* Sharp corners, Neo-Bauhaus */
+  border-radius: 0;
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
   .blogHeader {
-    margin-bottom: var(--ma-3); /* Less margin on mobile */
-    padding: var(--ma-2) 0; /* Reduced padding */
+    padding: var(--ma-3) 0;
   }
 
   .container {
+    padding: 0 var(--ma-1);
+    min-height: auto;
+    display: flex;
     flex-direction: column;
-    gap: var(--ma-1); /* 24px gap */
+    gap: var(--ma-2); /* Stack with spacing */
+  }
+
+  .nameFloat {
+    position: relative;
+    top: auto;
+    right: auto;
     text-align: center;
+    width: 100%;
   }
 
   .title {
-    font-size: 28px; /* Still prominent but not overwhelming */
-    font-weight: 900;
+    font-size: 26px;
   }
 
-  .title::after {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%; /* Slightly narrower on mobile */
+  .underline {
+    margin-left: auto;
+    margin-right: auto; /* Center on mobile */
   }
 
-  .nav {
-    flex-wrap: wrap;
+  .navAnchor {
+    position: relative;
+    bottom: auto;
+    left: auto;
     justify-content: center;
-    gap: var(--ma-1); /* 24px on mobile for easier touch targets */
+    flex-wrap: wrap;
+    gap: var(--ma-1); /* Smaller gap on mobile */
   }
 
   .navLink {

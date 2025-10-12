@@ -70,20 +70,21 @@
 .title {
   position: relative;
   font-size: 38px; /* var(--font-size-2xl) */
-  line-height: 1.2;
-  font-weight: 700;
+  line-height: 1.25;
+  font-weight: 600; /* Lighter weight - more refined */
   margin: 0 0 24px 0; /* 0 0 var(--ma-1) 0 */
   color: var(--color-text-primary);
   padding-bottom: 12px; /* Space above underline */
+  letter-spacing: -0.01em; /* Slight negative tracking */
 }
 
-/* Vermilion underline - core Strata element */
+/* Vermilion underline - core Strata element (40% width for restraint) */
 .title::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 40%; /* Accent, not barrier */
   height: 2px;
   background-color: var(--color-vermilion);
   transition: width 200ms var(--construct-ease-mechanical);
@@ -91,7 +92,7 @@
 
 /* Extend underline on hover */
 .post:hover .title::after {
-  width: 110%;
+  width: 50%; /* Grows to 50% on hover */
 }
 
 /* Excerpt styling */
@@ -225,12 +226,13 @@
 /* H1 for individual post page */
 .postTitle {
   position: relative;
-  font-size: 50px; /* var(--font-size-3xl) - larger for detail page */
-  line-height: 1.2;
-  font-weight: 700;
+  font-size: 42px; /* Refined from 50px - less shouty */
+  line-height: 1.25;
+  font-weight: 600; /* Lighter weight - more refined */
   margin: 0 0 48px 0; /* 0 0 var(--ma-3) 0 */
   color: var(--color-text-primary);
   padding-bottom: 16px;
+  letter-spacing: -0.01em; /* Slight negative tracking */
 }
 
 .postTitle::after {
@@ -238,7 +240,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 40%; /* Accent, not barrier - matches home page hero */
   height: 2px;
   background-color: var(--color-vermilion);
 }

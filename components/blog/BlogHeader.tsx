@@ -1,5 +1,5 @@
-// ABOUTME: Personal blog header with navigation and branding
-// ABOUTME: Links to main site, blog, and social profiles
+// ABOUTME: Personal blog header with Floating Name design
+// ABOUTME: Inverted hierarchy - name top-right, nav bottom-left
 
 import React from 'react';
 import Link from 'next/link';
@@ -9,30 +9,20 @@ export default function BlogHeader() {
   return (
     <header className={styles.blogHeader}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Ben Redmond</h1>
-        <nav className={styles.nav}>
+        {/* Name floats top-right */}
+        <div className={styles.nameFloat}>
+          <h1 className={styles.title}>Ben Redmond</h1>
+          <span className={styles.underline} />
+        </div>
+
+        {/* Nav anchors bottom-left */}
+        <nav className={styles.navAnchor}>
           <Link href="/" className={styles.navLink}>
             Home
           </Link>
           <Link href="/blog" className={styles.navLink}>
             Blog
           </Link>
-          <a
-            href="https://github.com/benredmond"
-            className={styles.navLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com/in/benredmond"
-            className={styles.navLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
         </nav>
       </div>
     </header>

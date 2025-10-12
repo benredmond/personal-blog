@@ -7,10 +7,9 @@ import styles from './AuthorBio.module.css';
 export default function AuthorBio() {
   return (
     <div className={styles.authorBio}>
-      <h3 className={styles.heading}>About Ben</h3>
+      <h3 className={styles.heading}>About Me</h3>
       <p className={styles.bio}>
-        Builder and software engineer exploring frontier AI coding techniques.
-        Currently building{' '}
+        Builder and software engineer exploring frontier AI coding techniques. Currently building{' '}
         <a
           href="https://koucai.chat"
           className={styles.link}
@@ -19,8 +18,8 @@ export default function AuthorBio() {
         >
           koucai.chat
         </a>
-        , a Chinese learning app. Writing monthly about AI-assisted development
-        and product building.
+        , an AI native Chinese learning app. Writing about AI-assisted development and product
+        building.
       </p>
       <div className={styles.links}>
         <a
@@ -32,7 +31,7 @@ export default function AuthorBio() {
           GitHub
         </a>
         <a
-          href="https://linkedin.com/in/benredmond"
+          href="https://linkedin.com/in/ben-redmond1/"
           className={styles.socialLink}
           target="_blank"
           rel="noopener noreferrer"
