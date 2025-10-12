@@ -12,6 +12,7 @@ import rehypeSanitize from 'rehype-sanitize';
 import MasterGrid from '@/components/layout/MasterGrid';
 import BlogHeader from '@/components/blog/BlogHeader';
 import AuthorBio from '@/components/blog/AuthorBio';
+import ReadingProgress from '@/components/blog/ReadingProgress';
 import styles from '@/components/blog/StrataPost.module.css';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
 
@@ -95,6 +96,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
+      <ReadingProgress />
       <BlogHeader />
       <MasterGrid>
         <article className={`col-span-12 md:col-span-8 md:col-start-3 ${styles.article}`}>

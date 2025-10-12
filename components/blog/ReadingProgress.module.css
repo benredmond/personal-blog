@@ -1,0 +1,28 @@
+/* ABOUTME: Scandinavian Strata reading progress indicator styles */
+/* ABOUTME: Minimal, functional design with vermilion accent */
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 100;
+  background: transparent;
+  pointer-events: none; /* Don't block clicks */
+}
+
+.bar {
+  height: 100%;
+  background: var(--color-vermilion);
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform; /* Promote to GPU layer for smooth animation */
+}
+
+/* Respect motion preferences - smooth instead of instant */
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: transform 0.3s ease;
+  }
+}

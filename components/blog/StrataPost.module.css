@@ -121,7 +121,7 @@
 .continueReading::after {
   content: '→';
   margin-left: 6px;
-  transition: transform 200ms;
+  transition: transform 200ms var(--construct-ease-mechanical);
 }
 
 .continueReading:hover::after {
@@ -197,7 +197,7 @@
 .backNav::before {
   content: '←';
   margin-right: 8px;
-  transition: transform 200ms;
+  transition: transform 200ms var(--construct-ease-mechanical);
 }
 
 .backNav:hover::before {
@@ -308,18 +308,23 @@
   color: var(--color-text-primary);
 }
 
-/* Prose links - ultramarine → vermilion */
+/* Prose links - ultramarine → vermilion with sliding underline */
 .prose a {
+  position: relative;
   color: var(--color-ultramarine);
-  text-decoration: underline;
-  text-decoration-color: var(--ultramarine-20);
-  text-underline-offset: 2px;
-  transition: color 200ms, text-decoration-color 200ms;
+  text-decoration: none;
+  background-image: linear-gradient(to right, var(--color-ultramarine), var(--color-ultramarine));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 200ms var(--construct-ease-mechanical),
+              color 200ms var(--construct-ease-mechanical);
 }
 
 .prose a:hover {
   color: var(--color-vermilion);
-  text-decoration-color: var(--color-vermilion);
+  background-image: linear-gradient(to right, var(--color-vermilion), var(--color-vermilion));
+  background-size: 100% 1px;
 }
 
 /* Prose lists - refined styling */
