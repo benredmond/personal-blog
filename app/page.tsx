@@ -56,6 +56,12 @@ export default function HomePage() {
             <h2 className={styles.sectionTitle}>Connect</h2>
             <div className={styles.socialLinks}>
               <a
+                href="mailto:benjamin.j.redmond@gmail.com"
+                className={styles.socialLink}
+              >
+                Email
+              </a>
+              <a
                 href="https://github.com/benredmond"
                 className={styles.socialLink}
                 target="_blank"
