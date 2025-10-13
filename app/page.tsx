@@ -17,8 +17,7 @@ export default function HomePage() {
           <section className={styles.hero}>
             <h1 className={styles.title}>Building AI-native products in production.</h1>
             <p className={styles.intro}>
-              I&apos;m Ben, a product engineer shipping AI applications on the side while helping
-              MongoDB adopt AI at enterprise scale. Currently building{' '}
+              I&apos;m Ben, a product engineer at MongoDB, building{' '}
               <a
                 href="https://koucai.chat"
                 target="_blank"
@@ -26,8 +25,8 @@ export default function HomePage() {
                 className={styles.inlineLink}
               >
                 koucai.chat
-              </a>
-              —a Chinese learning app where students practice conversations with adaptive AI tutors.
+              </a>{' '}
+              on the side—a Chinese learning app where students practice conversations with adaptive AI tutors.
             </p>
           </section>
 
@@ -35,7 +34,7 @@ export default function HomePage() {
           <section className={styles.blog}>
             <h2 className={styles.sectionTitle}>Writing</h2>
             <p className={styles.blogDescription}>
-              I write about what works (and what breaks) when building with AI:
+              I write about what works (and what breaks) when building in production:
             </p>
             <ul className={styles.topicList}>
               <li>Structuring code to be readable by AI agents, not just human reviewers</li>
@@ -44,7 +43,7 @@ export default function HomePage() {
               <li>Architecture decisions that seem small but compound over time</li>
             </ul>
             <p className={styles.blogSubtext}>
-              Monthly posts for AI product builders who care about what actually works.
+              Monthly posts for product engineers who care about what actually works.
             </p>
             <Link href="/blog" className={styles.blogLink}>
               Read the blog →
