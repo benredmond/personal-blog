@@ -9,7 +9,7 @@ export default function AuthorBio() {
     <div className={styles.authorBio}>
       <h3 className={styles.heading}>About Me</h3>
       <p className={styles.bio}>
-        Product engineer at MongoDB, building{' '}
+        Software engineer at MongoDB, building{' '}
         <a
           href="https://koucai.chat"
           className={styles.link}
@@ -18,13 +18,10 @@ export default function AuthorBio() {
         >
           koucai.chat
         </a>{' '}
-        on the side. I write about what works (and what breaks) when shipping with AI.
+        on the side. I write about what works (and what breaks) when working with AI.
       </p>
       <div className={styles.links}>
-        <a
-          href="mailto:benjamin.j.redmond@gmail.com"
-          className={styles.socialLink}
-        >
+        <a href="mailto:benjamin.j.redmond@gmail.com" className={styles.socialLink}>
           Email
         </a>
         <a
