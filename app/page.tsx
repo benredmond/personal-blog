@@ -17,7 +17,7 @@ export default function HomePage() {
           <section className={styles.hero}>
             <h1 className={styles.title}>Building AI-native products in production.</h1>
             <p className={styles.intro}>
-              I&apos;m Ben, a product engineer at MongoDB, building{' '}
+              I&apos;m Ben, a software engineer at MongoDB, building{' '}
               <a
                 href="https://koucai.chat"
                 target="_blank"
@@ -26,7 +26,8 @@ export default function HomePage() {
               >
                 koucai.chat
               </a>{' '}
-              on the side—a Chinese learning app where students practice conversations with adaptive AI tutors.
+              on the side—a Chinese learning app where students practice conversations with adaptive
+              AI tutors.
             </p>
           </section>
 
@@ -34,17 +35,15 @@ export default function HomePage() {
           <section className={styles.blog}>
             <h2 className={styles.sectionTitle}>Writing</h2>
             <p className={styles.blogDescription}>
-              I write about what works (and what breaks) when building in production:
+              Writing about my thoughts and experiences using AI, both in enterprise and greenfield
+              projects:
             </p>
             <ul className={styles.topicList}>
-              <li>Structuring code to be readable by AI agents, not just human reviewers</li>
-              <li>When to ship, iterate, or kill: managing AI-assisted build cycles</li>
-              <li>When to trust AI-generated code (and when the stakes are too high)</li>
-              <li>Architecture decisions that seem small but compound over time</li>
+              <li>How I used Claude Code to build Koucai</li>
+              <li>What works when using AI in an enterprise codebase with millions of LOC</li>
+              <li>Is Claude nice to me?</li>
             </ul>
-            <p className={styles.blogSubtext}>
-              Monthly posts for product engineers who care about what actually works.
-            </p>
+            <p className={styles.blogSubtext}>Monthly posts about my experiences</p>
             <Link href="/blog" className={styles.blogLink}>
               Read the blog →
             </Link>
@@ -54,10 +53,7 @@ export default function HomePage() {
           <section className={styles.connect}>
             <h2 className={styles.sectionTitle}>Connect</h2>
             <div className={styles.socialLinks}>
-              <a
-                href="mailto:benjamin.j.redmond@gmail.com"
-                className={styles.socialLink}
-              >
+              <a href="mailto:benjamin.j.redmond@gmail.com" className={styles.socialLink}>
                 Email
               </a>
               <a
