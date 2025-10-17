@@ -335,6 +335,15 @@
   line-height: 1.7;
 }
 
+/* Restore list styles (Tailwind Preflight removes them) */
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
 .prose li {
   margin-bottom: 12px; /* More space between items */
   padding-left: 8px; /* Subtle padding */
