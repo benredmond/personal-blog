@@ -231,7 +231,7 @@
   .master-grid {
     grid-template-columns: repeat(6, 1fr);
     gap: var(--ma-0); /* 16px on mobile */
-    padding: 0 var(--ma-0);
+    padding: 0 20px; /* 20px horizontal padding on mobile for balanced spacing */
   }
 }
 
@@ -291,6 +291,14 @@ article,
   max-width: 720px; /* Optimal line length: 45-75 characters */
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Mobile: Remove fixed max-width to prevent horizontal overflow */
+@media (max-width: 639px) {
+  article,
+  .prose {
+    max-width: 100%;
+  }
 }
 
 /* Typography utilities */
@@ -382,4 +390,15 @@ code {
 pre code {
   background: none;
   padding: 0;
+}
+
+/* Phase 1: Text Selection - Vermilion highlight */
+::selection {
+  background-color: var(--vermilion-20); /* 20% vermilion */
+  color: var(--color-text-primary);
+}
+
+::-moz-selection {
+  background-color: var(--vermilion-20);
+  color: var(--color-text-primary);
 }
