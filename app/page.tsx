@@ -41,9 +41,8 @@ export default function HomePage() {
             <ul className={styles.topicList}>
               <li>How I used Claude Code to build Koucai</li>
               <li>What works when using AI in an enterprise codebase with millions of LOC</li>
-              <li>Is Claude nice to me?</li>
+              <li>Is Claude being nice to me?</li>
             </ul>
-            <p className={styles.blogSubtext}>Monthly posts about my experiences</p>
             <Link href="/blog" className={styles.blogLink}>
               Read the blog →
             </Link>
