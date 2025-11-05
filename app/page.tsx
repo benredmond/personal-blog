@@ -52,7 +52,7 @@ export default function HomePage() {
           <section className={styles.connect}>
             <h2 className={styles.sectionTitle}>Connect</h2>
             <div className={styles.socialLinks}>
-              <a href="mailto:benjamin.j.redmond@gmail.com" className={styles.socialLink}>
+              <a href="mailto:ben@benr.build" className={styles.socialLink}>
                 Email
               </a>
               <a
