@@ -399,6 +399,85 @@
   color: var(--color-text-secondary);
 }
 
+/* Prose tables - Scandinavian Restraint styling */
+.prose table {
+  width: 100%;
+  margin: 32px 0; /* var(--ma-2) - generous spacing */
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: auto;
+  display: block;
+}
+
+.prose thead {
+  border-bottom: none;
+}
+
+.prose th {
+  position: relative;
+  padding: 12px 16px 16px 16px; /* Extra bottom padding for underline */
+  text-align: left;
+  font-weight: 700; /* Bolder weight without background */
+  font-size: 16px;
+  letter-spacing: 0.02em; /* Subtle breathing room */
+  color: var(--color-text-primary);
+  background: transparent;
+}
+
+/* Partial vermilion underline (40% width, left-aligned) - matches title underlines */
+.prose th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 16px; /* Aligned with text padding */
+  width: 40%; /* Matches your title underlines */
+  height: 2px;
+  background: var(--color-vermilion);
+  transition: width 200ms var(--construct-ease-mechanical);
+}
+
+.prose td {
+  padding: 16px;
+  border: none; /* Pure whitespace separation */
+  color: var(--color-text-primary);
+}
+
+/* Hover: underline extends to 50% */
+.prose tbody tr:hover th::after {
+  width: 50%;
+}
+
+/* Add subtle Ma spacing between rows via transparent border */
+.prose tbody tr {
+  border-bottom: 8px solid transparent;
+}
+
+/* Responsive tables */
+@media (max-width: 639px) {
+  .prose table {
+    font-size: 14px;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 12px;
+  }
+
+  .prose th::after {
+    left: 12px; /* Adjust for mobile padding */
+  }
+}
+
+/* Prose images */
+.prose img {
+  max-width: 100%;
+  height: auto;
+  margin: 32px 0; /* var(--ma-2) */
+  display: block;
+  border: 1px solid var(--color-light-gray);
+}
+
 /* Author bio spacing */
 .authorBioWrapper {
   margin-top: 80px; /* var(--ma-5) - generous separation */
