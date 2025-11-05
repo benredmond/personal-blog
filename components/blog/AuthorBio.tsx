@@ -21,7 +21,7 @@ export default function AuthorBio() {
         on the side. I write about what works (and what breaks) when working with AI.
       </p>
       <div className={styles.links}>
-        <a href="mailto:benjamin.j.redmond@gmail.com" className={styles.socialLink}>
+        <a href="mailto:ben@benr.build" className={styles.socialLink}>
           Email
         </a>
         <a
