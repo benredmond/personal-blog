@@ -1,0 +1,418 @@
+/* Velvelyne font - self-hosted */
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('/fonts/velvelyne/Velvelyne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === Global Pottery Page Styles === */
+
+/* Override global body background for pottery page */
+body:has(.pottery-page) {
+  background: #D9D4CC !important;
+  background-image:
+    radial-gradient(circle, rgba(58, 54, 51, 0.015) 1px, transparent 1px),
+    radial-gradient(circle, rgba(58, 54, 51, 0.025) 0.5px, transparent 0.5px) !important;
+  background-size: 64px 64px, 32px 32px !important;
+  background-position: 0 0, 32px 32px !important;
+}
+
+.pottery-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12vh 24px;
+  position: relative;
+
+  /* Font */
+  font-family: 'Velvelyne', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Form Container === */
+
+.pottery-container {
+  width: 100%;
+  max-width: 620px;
+  padding: 80px;
+  background: #F4EFE6;
+
+  /* Subtle paper grain texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+
+  /* Subtle paper edge */
+  border: 1px solid rgba(58, 54, 51, 0.08);
+  border-radius: 0;
+  position: relative;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Edge vignette for paper depth */
+.pottery-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 60px rgba(58, 54, 51, 0.025);
+}
+
+.pottery-form {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.pottery-form.submitting {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* === Illustrations === */
+
+.illustration-top {
+  position: absolute;
+  top: calc(50vh - 420px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.95;
+}
+
+.illustration-top svg {
+  width: 90px;
+  height: 110px;
+}
+
+.illustration-bottom {
+  position: absolute;
+  bottom: calc(50vh - 400px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+}
+
+.illustration-bottom svg {
+  width: 65px;
+  height: 55px;
+}
+
+.illustration-confirmation {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.illustration-confirmation svg {
+  width: 80px;
+  height: 100px;
+  opacity: 0.95;
+}
+
+/* === Heading === */
+
+.pottery-heading {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500;
+  color: #3A3633;
+  letter-spacing: -0.01em;
+  margin: 0 0 40px 0;
+}
+
+.pottery-label {
+  display: block;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #5F6368;
+  margin-bottom: 12px;
+}
+
+/* === Form Elements === */
+
+/* Textarea */
+.pottery-textarea {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  padding: 20px;
+
+  font-family: 'Velvelyne', Georgia, serif;
+  font-size: 17px;
+  line-height: 32px;
+  font-weight: 400;
+  color: #2D2A27;
+  letter-spacing: 0.01em;
+
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(58, 54, 51, 0.12);
+  border-radius: 0;
+  resize: vertical;
+
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pottery-textarea::placeholder {
+  color: #A8A199;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.pottery-textarea::selection {
+  background: rgba(184, 112, 79, 0.2);
+  color: inherit;
+}
+
+.pottery-textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.4);
+  border-color: #B8704F;
+  box-shadow: 0 0 0 3px rgba(184, 112, 79, 0.1);
+}
+
+.pottery-textarea.error {
+  outline: 1px solid #DC2626;
+  outline-offset: -1px;
+}
+
+/* Submit Button */
+.pottery-button {
+  background: #B8704F;
+  border: none;
+  padding: 16px 32px;
+  margin-top: 48px;
+  cursor: pointer;
+  border-radius: 0;
+
+  font-family: 'Velvelyne', Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #FAF8F5;
+
+  box-shadow: 0 2px 8px rgba(184, 112, 79, 0.2);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.pottery-button:hover:not(:disabled) {
+  background: #A66D5E;
+  box-shadow: 0 4px 12px rgba(184, 112, 79, 0.3);
+}
+
+.pottery-button:active:not(:disabled) {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(184, 112, 79, 0.2);
+}
+
+.pottery-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Error Messages */
+.error-message {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #DC2626;
+  font-weight: 400;
+}
+
+.submit-error {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* === Confirmation Screen === */
+
+.confirmation-container {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards 0.9s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.confirmation-screen {
+  text-align: center;
+}
+
+.confirmation-check {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.confirmation-text {
+  margin-bottom: 16px;
+}
+
+.confirmation-text p {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 400;
+  color: #3A3633;
+  margin: 0 0 8px 0;
+}
+
+/* === Responsive Breakpoints === */
+
+/* Tablet (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .pottery-page {
+    padding: 12vh 24px;
+  }
+
+  .pottery-container {
+    max-width: 580px;
+    padding: 64px;
+  }
+
+  .pottery-heading {
+    font-size: 22px;
+    line-height: 34px;
+    margin: 0 0 40px 0;
+  }
+
+  .pottery-textarea {
+    line-height: 30px;
+  }
+
+  .illustration-top {
+    top: calc(50vh - 380px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .illustration-top svg {
+    width: 80px;
+    height: 96px;
+  }
+
+  .illustration-bottom {
+    bottom: calc(50vh - 360px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .illustration-bottom svg {
+    width: 56px;
+    height: 48px;
+  }
+
+  .illustration-confirmation svg {
+    width: 64px;
+    height: 80px;
+  }
+
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .pottery-page {
+    padding: 8vh 20px;
+  }
+
+  .pottery-container {
+    max-width: calc(100% - 40px);
+    padding: 48px;
+  }
+
+  .pottery-heading {
+    font-size: 21px;
+    line-height: 33px;
+    margin: 0 0 36px 0;
+  }
+
+  .pottery-textarea {
+    min-height: 180px;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .pottery-button {
+    margin-top: 48px;
+  }
+
+  .illustration-top {
+    top: calc(50vh - 340px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .illustration-top svg {
+    width: 70px;
+    height: 86px;
+  }
+
+  .illustration-bottom {
+    bottom: calc(50vh - 320px);
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .illustration-bottom svg {
+    width: 50px;
+    height: 43px;
+  }
+
+  .illustration-confirmation {
+    margin-top: 32px;
+  }
+
+  .illustration-confirmation svg {
+    width: 60px;
+    height: 75px;
+  }
+
+  .confirmation-text p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+/* === Accessibility === */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .pottery-form,
+  .pottery-button,
+  .pottery-select,
+  .pottery-input,
+  .pottery-textarea,
+  .confirmation-container {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .pottery-button:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .pottery-select,
+  .pottery-input,
+  .pottery-textarea {
+    border-width: 3px;
+  }
+
+  .pottery-button {
+    border: 2px solid #2C3338;
+  }
+}
