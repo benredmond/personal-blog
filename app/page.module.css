@@ -160,8 +160,9 @@
 .blogLink {
   display: inline-flex;
   align-items: center;
+  font-family: var(--font-sans-en);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-ultramarine);
   text-decoration: none;
   transition: color 200ms;
@@ -195,6 +196,7 @@
 }
 
 .socialLink {
+  font-family: var(--font-sans-en);
   font-size: 18px;
   font-weight: 500;
   color: var(--color-ultramarine);
