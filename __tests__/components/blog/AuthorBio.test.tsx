@@ -22,29 +22,21 @@ describe('AuthorBio', () => {
       render(<AuthorBio />);
 
       expect(
-        screen.getByText(/Product engineer shipping AI applications on the side/i)
-      ).toBeInTheDocument();
-      expect(
-        screen.getByText(/while helping MongoDB adopt AI at enterprise scale/i)
+        screen.getByText(/Software engineer at MongoDB/i)
       ).toBeInTheDocument();
     });
 
     it('renders Koucai project mention', () => {
       render(<AuthorBio />);
 
-      expect(
-        screen.getByText(/Currently building/i, { exact: false })
-      ).toBeInTheDocument();
-      expect(
-        screen.getByText(/a Chinese learning app with adaptive AI tutors/i)
-      ).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'koucai.chat' })).toBeInTheDocument();
     });
 
     it('renders author expertise description', () => {
       render(<AuthorBio />);
 
       expect(
-        screen.getByText(/I write about what works \(and what breaks\) when building with AI in production/i)
+        screen.getByText(/I write about what works \(and what breaks\) when working with AI/i)
       ).toBeInTheDocument();
     });
   });
@@ -121,47 +113,66 @@ describe('AuthorBio', () => {
     });
   });
 
-  describe('Link Security', () => {
-    it('all external links have rel="noopener noreferrer"', () => {
+  describe('Email Link', () => {
+    it('renders Email link with correct href', () => {
       render(<AuthorBio />);
 
-      const allLinks = screen.getAllByRole('link');
+      const emailLink = screen.getByRole('link', { name: 'Email' });
+      expect(emailLink).toBeInTheDocument();
+      expect(emailLink).toHaveAttribute('href', 'mailto:ben@benr.build');
+    });
+  });
 
-      // Should have exactly 3 links
-      expect(allLinks).toHaveLength(3);
+  describe('Link Security', () => {
+    it('external links have rel="noopener noreferrer"', () => {
+      render(<AuthorBio />);
 
-      // All links should have security attributes
-      allLinks.forEach((link) => {
-        expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-      });
+      // External links should have security attributes
+      const koucaiLink = screen.getByRole('link', { name: 'koucai.chat' });
+      const githubLink = screen.getByRole('link', { name: 'GitHub' });
+      const linkedinLink = screen.getByRole('link', { name: 'LinkedIn' });
+
+      expect(koucaiLink).toHaveAttribute('rel', 'noopener noreferrer');
+      expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
+      expect(linkedinLink).toHaveAttribute('rel', 'noopener noreferrer');
     });
 
-    it('all external links open in new tab', () => {
+    it('external links open in new tab', () => {
       render(<AuthorBio />);
 
-      const allLinks = screen.getAllByRole('link');
+      // External links should open in new tab
+      const koucaiLink = screen.getByRole('link', { name: 'koucai.chat' });
+      const githubLink = screen.getByRole('link', { name: 'GitHub' });
+      const linkedinLink = screen.getByRole('link', { name: 'LinkedIn' });
 
-      // All links should open in new tab
-      allLinks.forEach((link) => {
-        expect(link).toHaveAttribute('target', '_blank');
-      });
+      expect(koucaiLink).toHaveAttribute('target', '_blank');
+      expect(githubLink).toHaveAttribute('target', '_blank');
+      expect(linkedinLink).toHaveAttribute('target', '_blank');
+    });
+
+    it('email link does not open in new tab', () => {
+      render(<AuthorBio />);
+
+      const emailLink = screen.getByRole('link', { name: 'Email' });
+      expect(emailLink).not.toHaveAttribute('target');
     });
   });
 
   describe('Link Structure', () => {
-    it('renders all three expected links', () => {
+    it('renders all four expected links', () => {
       render(<AuthorBio />);
 
       const links = screen.getAllByRole('link');
-      expect(links).toHaveLength(3);
+      expect(links).toHaveLength(4);
 
       // Verify link text
       expect(screen.getByRole('link', { name: 'koucai.chat' })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Email' })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'LinkedIn' })).toBeInTheDocument();
     });
 
-    it('social links appear in correct order', () => {
+    it('links appear in correct order', () => {
       render(<AuthorBio />);
 
       const links = screen.getAllByRole('link');
@@ -169,11 +180,14 @@ describe('AuthorBio', () => {
       // First link is koucai.chat (inline in bio text)
       expect(links[0]).toHaveAttribute('href', 'https://koucai.chat');
 
-      // Second link is GitHub
-      expect(links[1]).toHaveAttribute('href', 'https://github.com/benredmond');
+      // Second link is Email
+      expect(links[1]).toHaveAttribute('href', 'mailto:ben@benr.build');
 
-      // Third link is LinkedIn
-      expect(links[2]).toHaveAttribute('href', 'https://linkedin.com/in/ben-redmond1/');
+      // Third link is GitHub
+      expect(links[2]).toHaveAttribute('href', 'https://github.com/benredmond');
+
+      // Fourth link is LinkedIn
+      expect(links[3]).toHaveAttribute('href', 'https://linkedin.com/in/ben-redmond1/');
     });
   });
 
@@ -213,11 +227,12 @@ describe('AuthorBio', () => {
     });
 
     it('contains links section for social profiles', () => {
-      const { container } = render(<AuthorBio />);
+      render(<AuthorBio />);
 
-      // Should have a div containing GitHub and LinkedIn links
+      // Should have a div containing Email, GitHub and LinkedIn links
       const socialLinks = screen.getByRole('link', { name: 'GitHub' }).parentElement;
       expect(socialLinks).toBeInTheDocument();
+      expect(socialLinks).toContainElement(screen.getByRole('link', { name: 'Email' }));
       expect(socialLinks).toContainElement(screen.getByRole('link', { name: 'LinkedIn' }));
     });
   });
