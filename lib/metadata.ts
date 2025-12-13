@@ -41,20 +41,11 @@ export function escapeXml(unsafe: string): string {
 }
 
 /**
- * Get OpenGraph image URL with fallback to default
- * Returns post's cover image if present, otherwise fallback to og-default.jpg
- */
-export function getOgImage(post?: { coverImage?: string }): string {
-  return post?.coverImage || '/images/og-default.jpg';
-}
-
-/**
  * Generate complete metadata object for blog post pages
  * Includes OpenGraph, Twitter Card, and canonical URL
+ * Note: OG images are auto-generated via app/blog/[slug]/opengraph-image.tsx
  */
 export function getBlogPostMetadata(post: BlogPost): Metadata {
-  const ogImage = getOgImage(post);
-
   return {
     title: `${post.title} | Ben Redmond`,
     description: post.excerpt,
@@ -63,14 +54,6 @@ export function getBlogPostMetadata(post: BlogPost): Metadata {
       description: post.excerpt,
       type: 'article',
       url: `/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
       publishedTime: post.date,
       authors: [post.author],
       siteName: 'Ben Redmond',
@@ -80,7 +63,6 @@ export function getBlogPostMetadata(post: BlogPost): Metadata {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [ogImage],
     },
     alternates: {
       canonical: `/blog/${post.slug}`,
