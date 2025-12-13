@@ -12,9 +12,9 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // Next.js needs unsafe-inline/eval
-              "style-src 'self' 'unsafe-inline'", // Tailwind needs unsafe-inline
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", // Tailwind needs unsafe-inline, Google Fonts
               "img-src 'self' data: https:", // Allow external images via HTTPS
-              "font-src 'self'",
+              "font-src 'self' https://fonts.gstatic.com", // Google Fonts
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",

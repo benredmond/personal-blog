@@ -4,18 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **standalone personal blog project** being extracted from the chinese-bot repository. The blog is built with Next.js 15.5.4 and React 19.1.0, featuring a Neo-Bauhaus L-Frame design with vermilion accents.
+Personal blog built with Next.js 15.5.4 and React 19.1.0, featuring a Neo-Bauhaus L-Frame design with vermilion accents. Also includes a pottery commission form (`/pottery`) with a separate warm/organic design system.
 
-**Current Status**: Project initialization phase (Sprint S01)
-- T00_S01 complete: App Router foundation established (2025-10-11)
-- Implementation tasks are tracked in `.simone/03_ACTIVE_SPRINTS/S01_Personal_Blog_Transition/`
-- All 10 task files (T00-T06 series) contain detailed implementation specifications
-- Expected completion: 3 days (17-26 hours)
-
-**Critical Architecture Decision (2025-10-11)**: Using **App Router** (not Pages Router)
-- Rationale: Learn modern Next.js patterns, better SEO, future-proofing
-- Impact: T00_S02 will require converting Pages Router components to App Router
-- Trade-off: Adds 3-5 hours to extraction but provides long-term benefits
+**Current Status**: Production
+- Blog fully functional with Neo-Bauhaus design
+- Pottery commission form in development (backend pending)
 
 ## Architecture & Design Decisions
 
@@ -111,33 +104,24 @@ Cache behavior:
 - **Location**: `__tests__/components/blog/`
 - **Framework**: Jest + React Testing Library
 
-## Task Execution Sequence
-
-**Phase 0: Project Extraction** (T00 series - MUST be completed first)
-1. T00_S01: ✅ COMPLETE - Initialized Next.js 15.5.4 with App Router, React 19, Tailwind, ESLint
-2. T00_S02: Convert and extract blog components from chinese-bot (Pages Router → App Router, maintain test coverage)
-3. T00_S03: Duplicate Neo-Bauhaus design system CSS
-4. T00_S04: Initialize git repo and connect to Vercel
-
-**Phase 1: Backend & Content** (T01-T02)
-1. T01_S01: Create `data/blog-posts.json`, implement API routes, add markdown rendering
-2. T02_S01: Add AuthorBio, BlogHeader, SocialShare components
-
-**Phase 2: SEO & Infrastructure** (T05-T06, T03 optional)
-1. T05_S01: Add OpenGraph/Twitter Card meta tags for social sharing
-2. T06_S01: Implement RSS feed (`/api/feed.xml`) and sitemap (`/sitemap.xml`)
-3. T03_S01: Optional visual identity tweaks
-
-**Phase 3: Deployment** (T04)
-1. T04_S01: Deploy standalone to Vercel with custom domain
-
 ## Key Constraints
 
-1. **NO subdomain routing** - This is a standalone deployment, not integrated with chinese-bot
-2. **NO MongoDB** - Use simple JSON file backend (decided 2025-10-11 05:00 UTC)
-3. **User handles content** - No seed data, no admin UI - user edits JSON directly
-4. **Keep Neo-Bauhaus aesthetic** - 9/10 design rating, user's preferred style
-5. **Maintain test coverage** - All 42 tests must continue passing after extraction
+1. **Blog uses JSON backend** - Posts stored in `data/blog-posts.json`, no database
+2. **User handles content** - No admin UI, edit JSON directly in VS Code
+3. **Two design systems** - Blog uses Neo-Bauhaus (vermilion), Pottery uses warm organic (terracotta)
+4. **Maintain test coverage** - Tests in `__tests__/`
+
+## Development Commands
+
+```bash
+npm run dev          # Start dev server (Turbopack)
+npm run build        # Production build
+npm run lint         # ESLint check
+npm run lint:fix     # ESLint auto-fix
+npm test             # Run all tests
+npm run test:watch   # Watch mode
+npm run test:coverage # Coverage report
+```
 
 ## Content Workflow
 
@@ -146,34 +130,29 @@ To add a new blog post after implementation:
 2. Add new post object with all required fields
 3. Commit and push (Vercel auto-deploys)
 
-## Source Reference
+## Pottery Commission Form (`app/pottery/`)
 
-Blog components currently exist in: `~/dev/chinese-bot/frontend/` (Pages Router format)
-- Pages: `pages/blog/index.jsx`, `pages/blog/[slug].jsx` → Need conversion to App Router
-- Components: `components/blog/BlogPostCard.jsx`, `components/blog/BlogListing.jsx`, `components/blog/EmptyState.jsx` → Reusable as-is
-- Tests: `__tests__/components/blog/` → May need updates for Server Components
-- Design system: `styles/` (Neo-Bauhaus CSS) → Reusable as-is
+A standalone pottery commission page for soliciting requests from friends.
 
-**Conversion Notes for T00_S02**:
-- Pages Router `pages/blog/index.jsx` → App Router `app/blog/page.jsx`
-- Pages Router `pages/blog/[slug].jsx` → App Router `app/blog/[slug]/page.jsx`
-- Remove `getServerSideProps` / `getStaticProps` → Use async Server Components
-- Add `'use client'` directive to components with interactivity (useState, onClick, etc.)
+### Design System (Separate from Blog)
+- **Background**: Speckled warm gray (`#D9D4CC`) with subtle texture pattern
+- **Form card**: Warm cream (`#F4EFE6`) with paper grain texture, slight rotation (-0.4deg)
+- **Accent**: Clay terracotta (`#B8704F`) for buttons and illustrations
+- **Typography**: Velvelyne (self-hosted) - serif with organic personality
+- **Form style**: Single open textarea (simplified from original MadLibs spec)
 
-## Sprint Planning Context
+### Key Files
+- `app/pottery/page.jsx` - Client component with form logic
+- `app/pottery/pottery.css` - Complete styling (390 lines)
+- `public/fonts/velvelyne/` - Self-hosted Velvelyne font
 
-All implementation details are in `.simone/03_ACTIVE_SPRINTS/S01_Personal_Blog_Transition/`:
-- **meta.md** - Sprint overview, timeline, success metrics
-- **T00_S01-T00_S04** - Project setup tasks (CRITICAL PATH)
-- **T01_S01** - Backend API with markdown rendering
-- **T02_S01** - Personal branding components
-- **T03_S01** - Visual identity updates (optional)
-- **T04_S01** - Standalone deployment guide
-- **T05_S01** - SEO/OpenGraph implementation
-- **T06_S01** - RSS feed and sitemap
+### Design Spec Reference
+Full specification: `~/Documents/Main Vault/Projects/Pottery Website.md`
 
-Each task file contains:
-- Detailed acceptance criteria
-- Complete implementation code samples
-- Common gotchas and validation steps
-- Success indicators
+### Current State
+- ✅ Form UI with validation (10-1000 chars)
+- ✅ Confirmation screen with animation
+- ✅ Hand-drawn SVG illustrations (placeholder - need GF's artwork)
+- ✅ Responsive (desktop/tablet/mobile)
+- 🚧 Backend: Currently logs to console (MongoDB integration pending)
+
