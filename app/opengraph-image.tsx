@@ -60,7 +60,7 @@ export default function OgImage() {
             {/* Vermilion underline */}
             <div
               style={{
-                width: '200px',
+                width: '300px',
                 height: '4px',
                 backgroundColor: '#ff3a2d',
                 marginTop: '16px',
