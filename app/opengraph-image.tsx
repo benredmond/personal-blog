@@ -57,13 +57,13 @@ export default function OgImage() {
             >
               Ben Redmond
             </h1>
-            {/* Vermilion underline - 40% width for restraint */}
+            {/* Vermilion underline */}
             <div
               style={{
-                width: '40%',
-                height: '2px',
+                width: '200px',
+                height: '4px',
                 backgroundColor: '#ff3a2d',
-                marginTop: '12px',
+                marginTop: '16px',
               }}
             />
           </div>
