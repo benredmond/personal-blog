@@ -24,28 +24,6 @@ export default function OgImage() {
           position: 'relative',
         }}
       >
-        {/* L-Frame: Top border */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '4px',
-            backgroundColor: '#ff3a2d',
-          }}
-        />
-        {/* L-Frame: Left border */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '4px',
-            height: '100%',
-            backgroundColor: '#ff3a2d',
-          }}
-        />
 
         {/* Content */}
         <div
@@ -59,19 +37,36 @@ export default function OgImage() {
             textAlign: 'center',
           }}
         >
-          <h1
+          <div
             style={{
-              fontFamily: 'Zodiak',
-              fontSize: '72px',
-              fontWeight: 700,
-              color: '#0a0a0a',
-              lineHeight: 1.2,
-              margin: 0,
-              letterSpacing: '-1px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            Ben Redmond
-          </h1>
+            <h1
+              style={{
+                fontFamily: 'Zodiak',
+                fontSize: '72px',
+                fontWeight: 700,
+                color: '#0a0a0a',
+                lineHeight: 1.2,
+                margin: 0,
+                letterSpacing: '-1px',
+              }}
+            >
+              Ben Redmond
+            </h1>
+            {/* Vermilion underline - 40% width for restraint */}
+            <div
+              style={{
+                width: '40%',
+                height: '2px',
+                backgroundColor: '#ff3a2d',
+                marginTop: '12px',
+              }}
+            />
+          </div>
           <p
             style={{
               fontFamily: 'Cabinet Grotesk',

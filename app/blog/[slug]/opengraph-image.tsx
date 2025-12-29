@@ -1,5 +1,5 @@
 // ABOUTME: Dynamic OG image generation for blog posts using Next.js ImageResponse
-// ABOUTME: Renders post title with Neo-Bauhaus design (vermilion L-frame, Zodiak typography)
+// ABOUTME: Renders post title with Strata design (vermilion underline, Zodiak typography)
 
 import { ImageResponse } from 'next/og';
 import { readFileSync } from 'fs';
@@ -45,29 +45,6 @@ export default async function OgImage({ params }: OgImageProps) {
           position: 'relative',
         }}
       >
-        {/* L-Frame: Top border */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '4px',
-            backgroundColor: '#ff3a2d',
-          }}
-        />
-        {/* L-Frame: Left border */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '4px',
-            height: '100%',
-            backgroundColor: '#ff3a2d',
-          }}
-        />
-
         {/* Title */}
         <div
           style={{
@@ -93,6 +70,15 @@ export default async function OgImage({ params }: OgImageProps) {
           >
             {title}
           </h1>
+          {/* Vermilion underline - 40% width for restraint */}
+          <div
+            style={{
+              width: '40%',
+              height: '2px',
+              backgroundColor: '#ff3a2d',
+              marginTop: '16px',
+            }}
+          />
         </div>
 
         {/* Branding */}
