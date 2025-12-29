@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: 'Ben Redmond',
   description:
-    'Software engineer exploring frontier AI coding techniques and building real products. Writing about what I learn along the way.',
+    'Making things. Breaking things. Mostly with AI now.',
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
