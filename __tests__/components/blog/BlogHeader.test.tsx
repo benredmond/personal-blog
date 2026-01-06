@@ -206,9 +206,9 @@ describe('BlogHeader', () => {
     it('name section contains heading and underline', () => {
       const { container } = render(<BlogHeader />);
 
-      const nameFloat = container.querySelector('[class*="nameFloat"]');
+      const nameFloat = container.querySelector('[class*="nameFloat"]') as HTMLElement | null;
       const heading = screen.getByRole('heading', { level: 1 });
-      const underline = container.querySelector('[class*="underline"]');
+      const underline = container.querySelector('[class*="underline"]') as HTMLElement | null;
 
       expect(nameFloat).toContainElement(heading);
       expect(nameFloat).toContainElement(underline);
@@ -217,7 +217,7 @@ describe('BlogHeader', () => {
     it('navigation section contains links', () => {
       const { container } = render(<BlogHeader />);
 
-      const navAnchor = container.querySelector('[class*="navAnchor"]');
+      const navAnchor = container.querySelector('[class*="navAnchor"]') as HTMLElement | null;
       const homeLink = screen.getByRole('link', { name: 'Home' });
       const blogLink = screen.getByRole('link', { name: 'Blog' });
 

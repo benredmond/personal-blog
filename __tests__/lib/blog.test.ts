@@ -442,9 +442,10 @@ describe('blog data layer', () => {
       const posts = getAllPosts();
 
       posts.forEach((post) => {
-        if (post.coverImage) {
+        const coverImage = post.coverImage;
+        if (typeof coverImage === 'string' && coverImage.length > 0) {
           // Should be valid URL
-          expect(() => new URL(post.coverImage)).not.toThrow();
+          expect(() => new URL(coverImage)).not.toThrow();
         }
       });
     });

@@ -27,7 +27,7 @@ describe('MasterGrid', () => {
       </MasterGrid>
     );
 
-    const gridElement = container.firstChild;
+    const gridElement = container.firstChild as HTMLElement | null;
     expect(gridElement).toHaveClass('master-grid');
   });
 
@@ -39,7 +39,7 @@ describe('MasterGrid', () => {
       </MasterGrid>
     );
 
-    const gridElement = container.firstChild;
+    const gridElement = container.firstChild as HTMLElement | null;
     expect(gridElement).toHaveClass('master-grid');
     expect(gridElement).toHaveClass(customClass);
   });
@@ -52,7 +52,7 @@ describe('MasterGrid', () => {
       </MasterGrid>
     );
 
-    const gridElement = container.firstChild;
+    const gridElement = container.firstChild as HTMLElement | null;
     expect(gridElement).toHaveClass('master-grid');
     expect(gridElement).toHaveClass('custom-layout');
     expect(gridElement).toHaveClass('spacing-large');
@@ -65,7 +65,7 @@ describe('MasterGrid', () => {
       </MasterGrid>
     );
 
-    const gridElement = container.firstChild;
+    const gridElement = container.firstChild as HTMLElement | null;
     expect(gridElement).toHaveClass('master-grid');
     expect(gridElement?.className).toBe('master-grid');
   });
@@ -73,7 +73,7 @@ describe('MasterGrid', () => {
   it('renders with no children', () => {
     const { container } = render(<MasterGrid>{null}</MasterGrid>);
 
-    const gridElement = container.firstChild;
+    const gridElement = container.firstChild as HTMLElement | null;
     expect(gridElement).toBeInTheDocument();
     expect(gridElement).toHaveClass('master-grid');
     expect(gridElement?.childNodes.length).toBe(0);
@@ -137,7 +137,7 @@ describe('MasterGrid', () => {
       </MasterGrid>
     );
 
-    const gridElement = container.firstChild;
+    const gridElement = container.firstChild as HTMLElement | null;
     // Should be exactly "master-grid", not "master-grid " with trailing space
     expect(gridElement?.className).toBe('master-grid');
   });
@@ -149,7 +149,7 @@ describe('MasterGrid', () => {
       </MasterGrid>
     );
 
-    const gridElement = container.firstChild;
+    const gridElement = container.firstChild as HTMLElement | null;
     // Should not have extra spaces due to trim()
     expect(gridElement).toHaveClass('master-grid');
     expect(gridElement).toHaveClass('custom-class');
