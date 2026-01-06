@@ -214,6 +214,7 @@
   animation: settleIn 400ms var(--construct-ease-out) 100ms forwards;
 }
 
+
 /* Post metadata for detail page */
 .postMetadata {
   display: flex;
@@ -268,6 +269,42 @@
 
 .prose > * {
   max-width: 100%;
+}
+
+/* Supporting evidence disclosure */
+.prose details.supportingEvidence {
+  margin: 24px 0 32px;
+}
+
+.prose details.supportingEvidence > div {
+  margin-top: 16px;
+}
+
+.prose details.supportingEvidence summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-vermilion);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prose details.supportingEvidence summary::marker {
+  content: '';
+}
+
+.prose details.supportingEvidence summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose details.supportingEvidence summary::after {
+  content: '+';
+  font-weight: 700;
+}
+
+.prose details.supportingEvidence[open] summary::after {
+  content: '-';
 }
 
 /* Prose headings */

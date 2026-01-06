@@ -5,7 +5,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
@@ -13,9 +13,14 @@ import MasterGrid from '@/components/layout/MasterGrid';
 import BlogHeader from '@/components/blog/BlogHeader';
 import AuthorBio from '@/components/blog/AuthorBio';
 import ReadingProgress from '@/components/blog/ReadingProgress';
+import TranscriptViewer from '@/components/blog/TranscriptViewer';
+import PlanComparison from '@/components/blog/PlanComparison';
+import Poll from '@/components/blog/Poll';
 import styles from '@/components/blog/StrataPost.module.css';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
 import { getBlogPostMetadata } from '@/lib/metadata';
+import { loadAllTranscripts, loadPlans, loadAnnotations } from '@/lib/transcripts';
+import { blogSanitizeSchema } from '@/lib/sanitize-schema';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -80,6 +85,44 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  // Load data server-side for messy middle post
+  const isMessyMiddlePost = slug === 'claude-vs-codex-messy-middle';
+  const transcripts = isMessyMiddlePost ? loadAllTranscripts() : null;
+  const plans = isMessyMiddlePost ? loadPlans() : null;
+  const annotations = isMessyMiddlePost
+    ? {
+        research: loadAnnotations('research'),
+        planning: loadAnnotations('planning'),
+        review: loadAnnotations('review'),
+      }
+    : null;
+
+
+  // Create custom components with injected data via closure
+   
+  const components: Components = {
+    'transcript-viewer': ((props: { phase?: string }) => {
+      const phase = props.phase || 'research';
+      return (
+        <TranscriptViewer
+          phase={phase}
+          claudeTranscript={transcripts?.[`${phase}-claude`] ?? null}
+          codexTranscript={transcripts?.[`${phase}-codex`] ?? null}
+          annotations={annotations?.[phase as keyof typeof annotations] ?? []}
+        />
+      );
+    }) as Components['div'],
+    'plan-comparison': (() => (
+      <PlanComparison
+        claudePlan={plans?.claude ?? null}
+        codexPlan={plans?.codex ?? null}
+        claudeModel={transcripts?.['planning-claude']?.model ?? null}
+        codexModel={transcripts?.['planning-codex']?.model ?? null}
+      />
+    )) as Components['div'],
+    poll: Poll as unknown as Components['div'],
+  } as Components;
+
   return (
     <>
       <ReadingProgress />
@@ -103,7 +146,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Markdown Content */}
           <div className={styles.prose}>
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeSanitize]}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw, [rehypeSanitize, blogSanitizeSchema]]}
+              components={components}
+            >
               {post.content}
             </ReactMarkdown>
           </div>
