@@ -1,0 +1,142 @@
+/* Poll component - Playful Strata styling */
+
+.poll {
+  max-width: 480px;
+  margin: 48px auto;
+  text-align: center;
+}
+
+.question {
+  font-family: var(--font-sans-en);
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--color-text-primary);
+}
+
+/* Voting options */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.option {
+  padding: 16px 32px;
+  border: 2px solid var(--color-light-gray);
+  background: transparent;
+  font-family: var(--font-sans-en);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.option:hover {
+  border-color: var(--color-vermilion);
+  color: var(--color-vermilion);
+}
+
+.option.selected {
+  border-color: var(--color-vermilion);
+  background: var(--vermilion-10);
+  color: var(--color-vermilion);
+}
+
+.submitButton {
+  margin-top: 24px;
+  padding: 12px 32px;
+  background: var(--color-vermilion);
+  border: none;
+  font-family: var(--font-sans-en);
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--color-vermilion-dark, #cc2e24);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Results view */
+.results {
+  text-align: left;
+}
+
+.resultRow {
+  margin-bottom: 20px;
+}
+
+.resultLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans-en);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+}
+
+.yourVote {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-vermilion);
+}
+
+.resultBarContainer {
+  height: 8px;
+  background: var(--color-light-gray);
+  margin-bottom: 8px;
+}
+
+.resultBar {
+  height: 100%;
+  background: var(--color-vermilion);
+  animation: barGrow 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-fill-mode: both;
+}
+
+@keyframes barGrow {
+  from {
+    width: 0%;
+  }
+}
+
+.resultStats {
+  font-family: var(--font-sans-en);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+/* Loading and error states */
+.loading {
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.error {
+  color: var(--color-vermilion);
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 639px) {
+  .options {
+    flex-direction: column;
+  }
+
+  .option {
+    width: 100%;
+  }
+}
