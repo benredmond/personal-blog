@@ -1,0 +1,305 @@
+/* PlanComparison - Terminal styling */
+
+.comparison {
+  --pc-bg: #0d1117;
+  --pc-surface: #161b22;
+  --pc-border: #30363d;
+  --pc-text-primary: #e6edf3;
+  --pc-text-secondary: #8b949e;
+  --pc-selection-bg: #ffd6d0;
+  --pc-selection-text: #0d1117;
+
+  margin: 48px -200px;
+  max-width: calc(100% + 400px);
+  background: var(--pc-bg);
+  font-family: 'Geist Mono', 'SF Mono', 'Monaco', monospace;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--pc-text-primary);
+}
+
+.comparison ::selection {
+  background: var(--pc-selection-bg);
+  color: var(--pc-selection-text);
+}
+
+.comparison ::-moz-selection {
+  background: var(--pc-selection-bg);
+  color: var(--pc-selection-text);
+}
+
+/* Controls bar */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--pc-border);
+  background: var(--pc-surface);
+}
+
+.toggles {
+  display: flex;
+  gap: 16px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pc-text-secondary);
+  cursor: pointer;
+}
+
+/* View mode switch */
+.viewSwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--color-vermilion);
+  border-radius: 999px;
+  background: var(--vermilion-10);
+}
+
+.viewButton {
+  padding: 6px 14px;
+  background: transparent;
+  border: none;
+  color: var(--pc-text-secondary);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.viewButton.active {
+  background: var(--color-vermilion);
+  color: #fff;
+}
+
+.viewButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tab bar */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--pc-border);
+  background: var(--pc-surface);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--pc-text-secondary);
+  font-family: var(--font-sans-en, -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: var(--pc-text-primary);
+  border-bottom-color: var(--color-vermilion);
+}
+
+.tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.model {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--pc-text-secondary);
+  margin-top: 2px;
+  overflow-wrap: anywhere;
+}
+
+/* Messages container */
+.messages {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.messages,
+.h2hMessages {
+  scrollbar-color: var(--pc-border) var(--pc-bg);
+  scrollbar-width: thin;
+}
+
+.messages::-webkit-scrollbar,
+.h2hMessages::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.messages::-webkit-scrollbar-track,
+.h2hMessages::-webkit-scrollbar-track {
+  background: var(--pc-bg);
+}
+
+.messages::-webkit-scrollbar-thumb,
+.h2hMessages::-webkit-scrollbar-thumb {
+  background: var(--pc-border);
+  border-radius: 8px;
+  border: 2px solid var(--pc-bg);
+}
+
+.messages::-webkit-scrollbar-thumb:hover,
+.h2hMessages::-webkit-scrollbar-thumb:hover {
+  background: var(--color-vermilion);
+}
+
+.empty {
+  padding: 48px;
+  text-align: center;
+  color: var(--pc-text-secondary);
+}
+
+.planContent {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--pc-text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Head-to-head mode */
+.h2hContainer {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.h2hColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.h2hHeader {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-sans-en, -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--color-vermilion);
+  background: var(--pc-surface);
+}
+
+.h2hLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.h2hModel {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--pc-text-secondary);
+  text-transform: none;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.h2hDivider {
+  width: 1px;
+  background: var(--pc-border);
+}
+
+.h2hMessages {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .comparison {
+    margin: 48px -40px;
+    max-width: calc(100% + 80px);
+  }
+
+  .h2hContainer {
+    flex-direction: column;
+    gap: 16px;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .h2hDivider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .h2hMessages {
+    max-height: 500px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h2hMode {
+    margin-left: calc(50% - 40vw);
+    margin-right: calc(50% - 40vw);
+    max-width: 80vw;
+  }
+
+  .h2hContainer {
+    max-width: calc(80vw - 48px);
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .comparison {
+    margin: 32px -20px;
+    max-width: calc(100% + 40px);
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .viewSwitch {
+    order: -1;
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .viewButton {
+    flex: 1;
+    text-align: center;
+  }
+
+  .messages {
+    max-height: 500px;
+    padding: 12px;
+  }
+}
