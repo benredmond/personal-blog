@@ -1650,11 +1650,11 @@ npm install @vercel/kv
 
 1. **Create KV Database:**
    - Vercel Dashboard → Storage → Create Database → KV
-   - Name: `blog-polls` (or similar)
+   - Name: `blog-db`
    - Region: Same as your deployment (e.g., `iad1`)
 
 2. **Connect to Project:**
-   - Storage → `blog-polls` → Connect Project
+   - Storage → `blog-db` → Connect Project
    - Select your blog project
    - Environment: Production (and optionally Preview)
 
@@ -1690,7 +1690,7 @@ export const pollStore = useMock
 |----------|----------|
 | Annotations UX | Margin notes (≥1200px) / Scroll tooltips (<1200px) - separate from flow |
 | Component styling | New CSS module (`TranscriptViewer.module.css`) using design tokens |
-| Vercel KV | Create `blog-polls` database, connect to project, free tier sufficient |
+| Vercel KV | Create `blog-db` database, connect to project, free tier sufficient |
 
 ---
 
