@@ -1,5 +1,22 @@
 [
   {
+    "id": "7",
+    "slug": "claude-code-nyc-meetup",
+    "title": "8 Things I Learned at the Claude Code NYC Meetup",
+    "excerpt": "House party for Claude Code enjoyers. Salespeople who now ship code. Designers who don't wait for engineers. A guy with 10 apps. The usual Claude Code degenerates.",
+    "content": "This past Thursday I went to the Claude Code NYC meetup at [Every's](https://every.to) office.\n\nHere are the 8 things I took away:\n\n1. In the AI slopware era, distribution remains paramount. Literally anyone with a \"great app idea\" can turn an idea into reality over a weekend with Claude Code.\n2. Related to 1 - Every is an AI-native software company. How? They write high-quality articles to get eyeballs, then use those eyeballs to distribute tasteful and useful vibe-coded AI native software.\n3. Salespeople are becoming engineers; Designers are becoming engineers; Product managers are becoming engineers; and Engineers are becoming all of them.\n4. Vibe entrepreneurs have 10 apps, each of them targeting a niche problem. You don't need 1 amazing idea anymore; you just need 10 decent ones.\n5. Non engineers are as excited, or more excited, about the Claude Code paradigm than actual engineers (probably because they don't need us anymore).\n6. No one knows *really* what they're doing with vibe coding - if they claim to, they're selling you something.\n7. Engineers are looking forward to stronger AI DevEx (centralizing of prompts, context optimization, etc.).\n8. Show, and tell. People like peeling back the curtain to see how others are using AI coding agents.\n\n**What was the vibe?**\n\nHouse party for Claude Code enjoyers.\n\n**Who was there?**\n\nSalespeople who now ship code. Designers who don't wait for engineers. A guy with 10 apps. The usual Claude Code degenerates.\n\n— Ben",
+    "author": "Ben Redmond",
+    "category": "AI",
+    "tags": [
+      "AI",
+      "Claude Code",
+      "vibe coding",
+      "meetup"
+    ],
+    "date": "2026-01-20T00:00:00Z",
+    "readTime": 2
+  },
+  {
     "id": "6",
     "slug": "claude-vs-codex-messy-middle",
     "title": "Claude vs Codex in the Messy Middle",
